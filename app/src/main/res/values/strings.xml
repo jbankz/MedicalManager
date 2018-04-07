@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">Medical Manager</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="error_message">required</string>
+    <string name="notification_title">Medication Time</string>
+    <string name="notification_body">It is time for your medications</string>
+
+    <string name="action_sign_in_short">Register</string>
+    <string name="email">Email</string>
+    <string name="minimum_password">Password too short, enter minimum 6 characters!</string>
+    <string name="auth_failed">Authentication failed, check your connection, email and password or sign up</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="btn_login">LOGIN</string>
+    <string name="btn_link_to_register">Don\'t have an account? Sign up now!</string>
+    <string name="btn_link_to_login">Already registered. Login Me!</string>
+    <string name="btn_forgot_password">Forgot your password?</string>
+    <string name="btn_reset_password">Reset Password</string>
+    <string name="btn_back"><![CDATA[<< Back]]></string>
+    <string name="lbl_forgot_password">Forgot password?</string>
+    <string name="forgot_password_msg">We just need your registered Email Id to sent you password reset instructions.</string>
+    <string name="title_activity_add_medication">Add Medication</string>
+    <string name="full_name">Full name</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="title_activity_edit_info">EditInfoActivity</string>
+    <string name="network_error_message">please connect to network...</string>
+    <string name="reset_message">We have sent you instructions to reset your password!</string>
+    <string name="error_reset_message">Failed to send reset email!</string>
+    <string name="email_error_message">Enter email address!</string>
+    <string name="password_error_message">password required</string>
+    <string name="confirmation_email">Enter your registered email id</string>
+    <string name="error_valid_email">Valid email required</string>
+    <string name="error_valid_password">Valid password required</string>
+    <string name="name_required">Name required</string>
+</resources>

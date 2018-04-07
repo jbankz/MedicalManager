@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/medication_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="name"
+                android:inputType="text"
+                android:textStyle="normal" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/medication_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="description"
+                android:inputType="text"
+                android:textStyle="normal" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/number_of_doze"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Number of Doze"
+                android:inputType="number"
+                android:textStyle="normal" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/number_of_times_daily"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Frequency"
+                android:inputType="number"
+                android:textStyle="normal" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:enabled="false"
+                android:hint="Date Started"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:text="click for Date"
+                android:textColor="@color/colorGreen"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/alarm_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Alarm"
+                android:inputType="number"
+                android:textStyle="normal" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/button_add"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="add"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>
