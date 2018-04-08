@@ -13,8 +13,4 @@
         app:actionViewClass="android.support.v7.widget.SearchView"
         app:showAsAction="ifRoom|collapseActionView" />
 
-    <item android:title="January"/>
-
-    <item android:title="February"/>
-
 </menu>

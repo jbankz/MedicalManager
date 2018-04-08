@@ -3,6 +3,7 @@ package bankzworld.com.data;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.widget.EditText;
 
 @Entity
 public class Medication {
@@ -25,15 +26,19 @@ public class Medication {
     @ColumnInfo(name = "date")
     private String date;
 
+    @ColumnInfo(name = "endDate")
+    private String endDate;
+
     @ColumnInfo(name = "month")
     private String month;
 
-    public Medication(String name, String description, String numOfDoze, String numOfTimes, String date, String month) {
+    public Medication(String name, String description, String numOfDoze, String numOfTimes, String date, String endDate, String month) {
         this.name = name;
         this.description = description;
         this.numOfDoze = numOfDoze;
         this.numOfTimes = numOfTimes;
         this.date = date;
+        this.endDate = endDate;
         this.month = month;
     }
 
@@ -87,6 +92,14 @@ public class Medication {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
     }
 
     public String getMonth() {

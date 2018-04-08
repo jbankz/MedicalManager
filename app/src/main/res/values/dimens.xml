@@ -8,4 +8,7 @@
 
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="logo_w_h">100dp</dimen>
+    <dimen name="text_size_big">24sp</dimen>
+    <dimen name="text_size_medium">16sp</dimen>
+    <dimen name="padding_medium">16dp</dimen>
 </resources>

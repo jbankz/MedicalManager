@@ -10,6 +10,10 @@ import java.util.List;
 @Dao
 public interface MedicationDao {
 
+    // insert to database
+    @Insert
+    void insertAll(Medication... medications);
+
     // query from database
     @Query("SELECT * FROM Medication")
     List<Medication> getAll();
@@ -17,10 +21,6 @@ public interface MedicationDao {
     // queries for items by month
     @Query("SELECT * FROM Medication WHERE month IN  (:month)")
     List<Medication> getSingleItem(String month);
-
-    // insert to database
-    @Insert
-    void insertAll(Medication... medications);
 
     // query from database
     @Delete

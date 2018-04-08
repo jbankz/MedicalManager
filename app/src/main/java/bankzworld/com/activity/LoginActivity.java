@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public FirebaseAuth auth;
     public EditText inputEmail, inputPassword;
     public Button btnSignup, btnLogin, btnReset;
-    ProgressBar mPb;
+    private ProgressBar mPb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,10 +85,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    public void performLogin() {
+    private void performLogin() {
         String email = inputEmail.getText().toString();
         final String password = inputPassword.getText().toString();
-
 
         if (TextUtils.isEmpty(email)) {
             inputEmail.setError(getString(R.string.email_error_message));

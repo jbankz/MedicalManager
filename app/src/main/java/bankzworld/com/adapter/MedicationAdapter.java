@@ -1,7 +1,9 @@
 package bankzworld.com.adapter;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -13,6 +15,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,8 +30,6 @@ public class MedicationAdapter extends RecyclerView.Adapter<MedicationAdapter.Vi
 
     private List<Medication> medicationList;
     private int lastPosition = -1;
-
-//    private final OnClickListener onClickListener;
 
     // constructor
     public MedicationAdapter(List<Medication> medicationList) {
@@ -52,7 +53,7 @@ public class MedicationAdapter extends RecyclerView.Adapter<MedicationAdapter.Vi
         holder.mName.setText(medicationList.get(position).getName());
         holder.mDesc.setText(medicationList.get(position).getDescription());
 
-        // retrieve the id from the room
+        // retrieve the id from the room database
         int id = medicationList.get(position).getId();
 
         // set the tag of itemView in the holder to the id
@@ -75,11 +76,7 @@ public class MedicationAdapter extends RecyclerView.Adapter<MedicationAdapter.Vi
         return medicationList.size();
     }
 
-    public interface OnClickListener {
-        void onItemClickListener(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo);
-    }
-
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener, View.OnClickListener {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView mName, mDesc;
 
@@ -88,18 +85,36 @@ public class MedicationAdapter extends RecyclerView.Adapter<MedicationAdapter.Vi
             mName = (TextView) itemView.findViewById(R.id.name);
             mDesc = (TextView) itemView.findViewById(R.id.desc);
 
-            itemView.setOnCreateContextMenuListener(this);
             itemView.setOnClickListener(this);
         }
 
         @Override
-        public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
-//            onClickListener.onItemClickListener(contextMenu, view, contextMenuInfo);
+        public void onClick(View view) {
+            Context context = view.getContext();
+            getAlertDialog(context);
         }
 
-        @Override
-        public void onClick(View view) {
+        public void getAlertDialog(Context context) {
+            Medication medication = medicationList.get(getLayoutPosition());
 
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            builder.setTitle("Drug Info");
+            builder.setCancelable(false);
+            builder.setMessage(medication.getName() + " is a "
+                    + medication.getDescription()
+                    + " drug and should be taken "
+                    + medication.getNumOfDoze() + "/" + medication.getNumOfTimes() +
+                    " times a day" + "\n" + " This drug is expected to last for "
+                    + medication.getEndDate() + " days/");
+
+            builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.dismiss();
+                }
+            });
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
         }
     }
 }

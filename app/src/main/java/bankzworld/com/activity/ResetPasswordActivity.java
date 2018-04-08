@@ -1,10 +1,8 @@
 package bankzworld.com.activity;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
@@ -72,14 +70,14 @@ public class ResetPasswordActivity extends AppCompatActivity implements View.OnC
 
     // test for network
     private void isNetworkAvailable() {
-        if (NetworkClass.isConnected(this)) {
-            performPasswordReset();
-        } else {
+        if (!NetworkClass.isConnected(this)) {
             Toast.makeText(ResetPasswordActivity.this, R.string.network_error_message, Toast.LENGTH_LONG).show();
+        } else {
+            performPasswordReset();
         }
     }
 
-    // performs request for password
+    // performs request for password request
     private void performPasswordReset() {
         String email = inputEmail.getText().toString().trim();
 

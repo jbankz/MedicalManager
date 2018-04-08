@@ -38,4 +38,8 @@
     <string name="error_valid_email">Valid email required</string>
     <string name="error_valid_password">Valid password required</string>
     <string name="name_required">Name required</string>
+    <string name="search_query">Search for medication</string>
+    <string name="help_one">Hi there! Welcome to Medical Manger, an application that helps users to keep record of their medications and also serves as a reminder to when the medication is to be taken and its duration.</string>
+    <string name="help_two">To get medications by category,</string>
+    <string name="help_three"> Click and hold the medication list to be able to view and sort medications by months.</string>
 </resources>

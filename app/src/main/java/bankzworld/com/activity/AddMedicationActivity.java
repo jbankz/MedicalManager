@@ -41,6 +41,8 @@ public class AddMedicationActivity extends AppCompatActivity implements View.OnC
     TextInputEditText mAlarm;
     @BindView(R.id.date)
     EditText mEditDate;
+    @BindView(R.id.end_date)
+    TextInputEditText mEndDate;
     @BindView(R.id.button_add)
     Button mButtonAdd;
     @BindView(R.id.btn_date)
@@ -48,8 +50,7 @@ public class AddMedicationActivity extends AppCompatActivity implements View.OnC
     public AppDatabase db;
     Medication medication;
     // declaration of variables
-    public String mName, mDescription, mDozeNumber, mNumberOfTimesDaily, setAlarm;
-    public String mCurrentDate, mMonth;
+    private String mName, mDescription, mDozeNumber, mNumberOfTimesDaily, mNumberOfDays, setAlarm, mCurrentDate, mMonth;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -62,13 +63,12 @@ public class AddMedicationActivity extends AppCompatActivity implements View.OnC
         // initialises the db
         db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "production").build();
 
+        // sets the click listeners
         mButtonDate.setOnClickListener(this);
         mButtonAdd.setOnClickListener(this);
 
     }
 
-    @SuppressLint("NewApi")
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onClick(View view) {
         int id = view.getId();
@@ -81,11 +81,11 @@ public class AddMedicationActivity extends AppCompatActivity implements View.OnC
                 mDozeNumber = mNumberOfDoze.getText().toString();
                 mNumberOfTimesDaily = mNumberOfTimes.getText().toString();
                 mCurrentDate = mEditDate.getText().toString();
-
+                mNumberOfDays = mEditDate.getText().toString();
                 setAlarm = mAlarm.getText().toString();
 
                 // calls validation method
-                if (!dataValidation(mName, mDescription, mDozeNumber, mNumberOfTimesDaily, mCurrentDate, mMonth)) {
+                if (!dataValidation(mName, mDescription, mDozeNumber, mNumberOfTimesDaily, mCurrentDate, mNumberOfDays, mMonth)) {
                     return;
                 }
 
@@ -119,11 +119,11 @@ public class AddMedicationActivity extends AppCompatActivity implements View.OnC
      * validate the inputs
      **/
     private boolean dataValidation(String medName, String medDescription,
-                                   String numOfDoze, String numOfTimes, String date, String month) {
+                                   String numOfDoze, String numOfTimes, String date, String endDate, String month) {
 
         if (medName.isEmpty()) {
             mMedicationName.setError(getString(R.string.error_message));
-        }  else if (medDescription.isEmpty()) {
+        } else if (medDescription.isEmpty()) {
             mMedicationDescription.setError(getString(R.string.error_message));
         } else if (numOfDoze.isEmpty()) {
             mNumberOfDoze.setError(getString(R.string.error_message));
@@ -131,6 +131,8 @@ public class AddMedicationActivity extends AppCompatActivity implements View.OnC
             mNumberOfTimes.setError(getString(R.string.error_message));
         } else if (date.isEmpty() || month.isEmpty()) {
             mEditDate.setText(getString(R.string.error_message));
+        } else if (endDate.isEmpty()) {
+            mEndDate.setError(getString(R.string.error_message));
         } else {
             // insert to database
             new PerformInsertion().execute();
@@ -148,7 +150,7 @@ public class AddMedicationActivity extends AppCompatActivity implements View.OnC
         @Override
         protected Void doInBackground(Medication... medications) {
             Log.d(TAG, "doInBackground: called");
-            medication = new Medication(mName, mDescription, mDozeNumber, mNumberOfTimesDaily, mCurrentDate, mMonth);
+            medication = new Medication(mName, mDescription, mDozeNumber, mNumberOfTimesDaily, mCurrentDate, mNumberOfDays, mMonth);
             db.medicationDao().insertAll(medication);
             return null;
         }
@@ -157,7 +159,7 @@ public class AddMedicationActivity extends AppCompatActivity implements View.OnC
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             // sets reminder and calls next activity
-        //    startActivity(new Intent(AddMedicationActivity.this, MainActivity.class));
+            startActivity(new Intent(AddMedicationActivity.this, MainActivity.class));
             // sets notification
             NotificationUtil.setAlarm(AddMedicationActivity.this, setAlarm);
         }

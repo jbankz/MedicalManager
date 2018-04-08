@@ -8,8 +8,8 @@
     android:orientation="vertical"
     android:padding="16dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".activity.EditInfoActivity"
-    tools:showIn="@layout/activity_edit_info">
+    tools:context=".activity.PatientInfoActivity"
+    tools:showIn="@layout/activity_patient_info">
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
             android:id="@+id/patient_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Name"
+            android:hint="Patient name"
             android:inputType="text"
             android:maxLines="1"
             android:singleLine="true" />
@@ -65,7 +65,7 @@
             android:id="@+id/patient_age"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Age"
+            android:hint="Patient age"
             android:inputType="number"
             android:maxLines="1"
             android:singleLine="true" />
@@ -80,7 +80,7 @@
             android:id="@+id/patient_location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Location"
+            android:hint="Patient location"
             android:inputType="text"
             android:maxLines="1"
             android:singleLine="true" />
@@ -95,9 +95,10 @@
             android:id="@+id/users_blood_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Blood Group"
+            android:hint="Patient blood group"
             android:inputType="textCapWords"
             android:maxLines="1"
+            android:maxLength="2"
             android:singleLine="true" />
     </android.support.design.widget.TextInputLayout>
 
@@ -109,7 +110,7 @@
             android:id="@+id/users_weight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Weight "
+            android:hint="Patient weight"
             android:inputType="numberDecimal"
             android:maxLines="1"
             android:singleLine="true" />
@@ -124,7 +125,7 @@
             android:id="@+id/users_tempereture"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Tempereture"
+            android:hint="Patient temperature"
             android:inputType="numberDecimal"
             android:maxLines="1"
             android:singleLine="true" />

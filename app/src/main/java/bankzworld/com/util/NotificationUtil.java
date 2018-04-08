@@ -34,7 +34,7 @@ public class NotificationUtil {
     /**
      * create a contentIntent helper method
      **/
-    private static PendingIntent contentItent(Context context) {
+    private static PendingIntent contentIntent(Context context) {
 
         // create an intent that opens up the MainActivity
         Intent startMainActivityIntent = new Intent(context, MainActivity.class);
@@ -72,7 +72,7 @@ public class NotificationUtil {
                 .setContentText(context.getString(R.string.notification_body))
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(context.getString(R.string.notification_body)))
                 .setDefaults(Notification.DEFAULT_VIBRATE)
-                .setContentIntent(contentItent(context))
+                .setContentIntent(contentIntent(context))
                 .setSound(Uri.parse("android.resource://bankzworld.com/" + R.raw.tone))
                 .setAutoCancel(true);
 

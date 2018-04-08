@@ -13,10 +13,8 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -59,9 +57,8 @@ public class MainActivity extends AppCompatActivity
 
         // new MainActivityFragment
         MainActivityFragment fragment = new MainActivityFragment();
-
+        // gets am instance of the getSupportFragmentManager class
         FragmentManager fragmentManager = getSupportFragmentManager();
-
         // perform fragment transaction
         fragmentManager.beginTransaction()
                 .add(R.id.container, fragment)
@@ -135,11 +132,14 @@ public class MainActivity extends AppCompatActivity
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Info");
         builder.setCancelable(false);
-        builder.setMessage((CharSequence) "Are You Sure?");
+        builder.setMessage((CharSequence) getString(R.string.help_one) +
+                getString(R.string.help_two) +
+                getString(R.string.help_three));
         builder.setIcon(R.drawable.ic_about);
         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
             }
         });
         AlertDialog alertDialog = builder.create();
@@ -157,20 +157,20 @@ public class MainActivity extends AppCompatActivity
             getAlertDialog();
         } else if (id == R.id.nav_log_out) {
             // logs user out
-            if (NetworkClass.isConnected(this)) {
-                signOut();
-            } else {
+            if (!NetworkClass.isConnected(this)) {
                 Toast.makeText(MainActivity.this, R.string.network_error_message, Toast.LENGTH_LONG).show();
+            } else {
+                signOut();
             }
 
         } else if (id == R.id.nav_settings) {
-            startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+            startActivity(new Intent(MainActivity.this, ProfileActivity.class));
         } else if (id == R.id.nav_delete) {
 
-            if (NetworkClass.isConnected(this)) {
-                deleteAccount();
-            } else {
+            if (!NetworkClass.isConnected(this)) {
                 Toast.makeText(MainActivity.this, R.string.network_error_message, Toast.LENGTH_LONG).show();
+            } else {
+                deleteAccount();
             }
 
         } else if (id == R.id.nav_send) {

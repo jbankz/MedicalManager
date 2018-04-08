@@ -3,26 +3,23 @@ package bankzworld.com.activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import bankzworld.com.R;
-import bankzworld.com.pojo.User;
+import bankzworld.com.data.User;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class SettingsActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity {
 
-    private static final String TAG = "SettingsActivity";
+    private static final String TAG = "ProfileActivity";
 
     @BindView(R.id.users_name)
     TextView mUserName;
@@ -42,8 +39,8 @@ public class SettingsActivity extends AppCompatActivity {
     FloatingActionButton fb;
 
     //Firebase
-    public FirebaseStorage storage;
-    public StorageReference storageReference;
+    private FirebaseStorage storage;
+    private StorageReference storageReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,14 +57,14 @@ public class SettingsActivity extends AppCompatActivity {
         storageReference = storage.getReference();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(User.getUserToken(this));
+    //    getSupportActionBar().setTitle(User.getUserToken(this));
 
         this.setTitle(User.getUserToken(this));
 
         fb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(SettingsActivity.this, EditInfoActivity.class));
+                startActivity(new Intent(ProfileActivity.this, PatientInfoActivity.class));
             }
         });
 
@@ -79,7 +76,7 @@ public class SettingsActivity extends AppCompatActivity {
     /**
      * Note: when this method is called the first time during the execution of the activity
      * it will return a null value from the preference but when the activity is been
-     * called from the EditInfoActivity, it will then return a stored value because a value will be
+     * called from the PatientInfoActivity, it will then return a stored value because a value will be
      * stored in preferences before calling this activity.
      **/
     private void retrieveUserDetails() {
@@ -91,8 +88,6 @@ public class SettingsActivity extends AppCompatActivity {
         mUserLocation.setText(prefs.getString("location", null));
         mUserBloodGroup.setText(prefs.getString("blood_group", null));
         mUsersWeight.setText(prefs.getString("weight", null));
-        mUsersTempereture.setText(prefs.getString("tempereture", null));
+        mUsersTempereture.setText(prefs.getString("temperature", null));
     }
-
-
 }

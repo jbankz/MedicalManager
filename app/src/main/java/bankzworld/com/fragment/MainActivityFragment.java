@@ -47,7 +47,7 @@ public class MainActivityFragment extends Fragment {
     @BindView(R.id.fab)
     public FloatingActionButton fab;
     public AppDatabase db;
-    @BindView(R.id.recyclerview)
+    @BindView(R.id.recycler_view)
     RecyclerView mRecyclerView;
     FirebaseAuth.AuthStateListener authListener;
     FirebaseAuth auth;
@@ -64,18 +64,18 @@ public class MainActivityFragment extends Fragment {
 
         setHasOptionsMenu(true);
 
-        // binds view
+        // initialises view
         ButterKnife.bind(this, view);
 
         // tests to see if user is signed in
         testForUsersAuthentication();
 
-        // sets the recyclerview
+        // sets the recycler view
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setHasFixedSize(true);
 
-        // registers the recyclerview for the menu
+        // registers the recycler view for the menu
         registerForContextMenu(mRecyclerView);
 
         db = Room.databaseBuilder(getContext(), AppDatabase.class, "production").build();
@@ -87,7 +87,6 @@ public class MainActivityFragment extends Fragment {
             public void onClick(View view) {
                 // starts another activity
                 startActivity(new Intent(getContext(), AddMedicationActivity.class));
-                getActivity().finish();
 
             }
         });
@@ -165,7 +164,7 @@ public class MainActivityFragment extends Fragment {
     }
 
     public void search(final SearchView searchView) {
-        searchView.setQueryHint("Search for medication");
+        searchView.setQueryHint(getString(R.string.search_query));
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -175,14 +174,14 @@ public class MainActivityFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                filter(medicationList, newText);
+                filterQuery(medicationList, newText);
                 return false;
             }
         });
     }
 
     // performs a search query
-    public void filter(List<Medication> p, String query) {
+    public void filterQuery(List<Medication> p, String query) {
         query = query.toLowerCase();
         final List<Medication> filteredList = new ArrayList<>();
         for (Medication medication : p) {

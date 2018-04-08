@@ -1,6 +1,5 @@
 package bankzworld.com.activity;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -21,7 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import bankzworld.com.R;
 import bankzworld.com.network.NetworkClass;
-import bankzworld.com.pojo.User;
+import bankzworld.com.data.User;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -71,10 +70,10 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 
     // test for network
     private void isNetworkAvailable() {
-        if (NetworkClass.isConnected(this)) {
-            isValidated();
-        } else {
+        if (!NetworkClass.isConnected(this)) {
             Toast.makeText(SignupActivity.this, R.string.network_error_message, Toast.LENGTH_LONG).show();
+        } else {
+            isValidated();
         }
     }
 

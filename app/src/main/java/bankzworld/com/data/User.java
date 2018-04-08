@@ -1,12 +1,8 @@
-package bankzworld.com.pojo;
+package bankzworld.com.data;
 
 import android.content.Context;
-import android.net.Uri;
 
 import com.google.firebase.database.IgnoreExtraProperties;
-
-import java.io.InputStream;
-import java.net.URI;
 
 @IgnoreExtraProperties
 public class User {
@@ -35,11 +31,11 @@ public class User {
     }
 
     public static String getUserToken(Context context) {
-        return SharedPreferenceHandler.getUserToken(context);
+        return SharedPreferenceHandler.getUsersName(context);
     }
 
     public static void saveUserToken(Context context, String userName) {
-        SharedPreferenceHandler.saveUserToken(context, userName);
+        SharedPreferenceHandler.saveUserName(context, userName);
     }
 
 }
