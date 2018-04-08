@@ -20,7 +20,8 @@
             android:name=".activity.MainActivity"
             android:label="@string/app_name"
             android:launchMode="singleTop"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
 
         <receiver android:name=".background.MyBroadcastReceiver" />
 
@@ -40,10 +41,11 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
             android:name=".activity.ResetPasswordActivity"
-            android:theme="@style/MyMaterialTheme" />
+            android:theme="@style/MyMaterialTheme"></activity>
         // add services to manifest
         <service
             android:name=".util.ReminderJobService"
@@ -54,7 +56,7 @@
         </service>
 
         <activity
-            android:name=".activity.SettingsActivity"
+            android:name=".activity.ProfileActivity"
             android:label="@string/title_activity_settings"
             android:parentActivityName=".activity.MainActivity"
             android:theme="@style/MyMaterialTheme.Base">
@@ -63,13 +65,13 @@
                 android:value="bankzworld.com.activity.MainActivity" />
         </activity>
         <activity
-            android:name=".activity.EditInfoActivity"
+            android:name=".activity.PatientInfoActivity"
             android:label="@string/title_activity_edit_info"
-            android:parentActivityName=".activity.SettingsActivity"
+            android:parentActivityName=".activity.ProfileActivity"
             android:theme="@style/MyMaterialTheme.Base">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="bankzworld.com.activity.SettingsActivity" />
+                android:value="bankzworld.com.activity.ProfileActivity" />
         </activity>
     </application>
 
