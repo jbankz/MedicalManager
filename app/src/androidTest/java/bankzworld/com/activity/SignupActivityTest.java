@@ -93,9 +93,9 @@ public class SignupActivityTest {
                 allOf(withId(R.id.sign_up_button), withText("Register"),
                         childAtPosition(
                                 childAtPosition(
-                                        withClassName(is("android.support.v4.widget.NestedScrollView")),
+                                        withClassName(is("android.support.v7.widget.CardView")),
                                         0),
-                                4),
+                                3),
                         isDisplayed()));
         appCompatButton.perform(click());
 
@@ -135,49 +135,19 @@ public class SignupActivityTest {
                                 childAtPosition(
                                         IsInstanceOf.<View>instanceOf(android.widget.FrameLayout.class),
                                         0),
-                                4),
+                                3),
                         isDisplayed()));
         button.check(matches(isDisplayed()));
 
         ViewInteraction button2 = onView(
-                allOf(withId(R.id.btn_reset_password),
+                allOf(withId(R.id.sign_up_button),
                         childAtPosition(
                                 childAtPosition(
                                         IsInstanceOf.<View>instanceOf(android.widget.FrameLayout.class),
                                         0),
-                                5),
+                                3),
                         isDisplayed()));
         button2.check(matches(isDisplayed()));
-
-        ViewInteraction button3 = onView(
-                allOf(withId(R.id.sign_in_button),
-                        childAtPosition(
-                                childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.FrameLayout.class),
-                                        0),
-                                6),
-                        isDisplayed()));
-        button3.check(matches(isDisplayed()));
-
-        ViewInteraction progressBar = onView(
-                allOf(withId(R.id.pb_loading),
-                        childAtPosition(
-                                childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.FrameLayout.class),
-                                        0),
-                                7),
-                        isDisplayed()));
-        progressBar.check(matches(isDisplayed()));
-
-        ViewInteraction progressBar2 = onView(
-                allOf(withId(R.id.pb_loading),
-                        childAtPosition(
-                                childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.FrameLayout.class),
-                                        0),
-                                7),
-                        isDisplayed()));
-        progressBar2.check(matches(isDisplayed()));
 
     }
 

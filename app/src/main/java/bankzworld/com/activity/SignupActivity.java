@@ -123,6 +123,8 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                             Toast.makeText(SignupActivity.this, getString(R.string.network_error_message), Toast.LENGTH_LONG).show();
                         } else {
                             Log.d(TAG, "onComplete: Successful");
+
+                            /**Note: REMEMBER TO COMMENT THIS INTENT LINE IN OTHER TO HAVE AN ACCURATE ESPRESSO TEST RESULT OF THIS ACTIVITY/FILE**/
                             startActivity(new Intent(SignupActivity.this, MainActivity.class));
                             finish();
                         }

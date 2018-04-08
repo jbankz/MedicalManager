@@ -64,6 +64,7 @@ public class ProfileActivity extends AppCompatActivity {
         fb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /**Note: REMEMBER TO COMMENT THIS INTENT LINE IN OTHER TO HAVE AN ACCURATE ESPRESSO TEST RESULT OF THIS ACTIVITY/FILE**/
                 startActivity(new Intent(ProfileActivity.this, PatientInfoActivity.class));
             }
         });

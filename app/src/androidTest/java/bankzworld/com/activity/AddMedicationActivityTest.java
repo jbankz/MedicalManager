@@ -20,21 +20,26 @@ import org.junit.runner.RunWith;
 import bankzworld.com.R;
 
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
+import static android.support.test.espresso.action.ViewActions.replaceText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.is;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class ProfileActivityTest {
+public class AddMedicationActivityTest {
 
     @Rule
-    public ActivityTestRule<ProfileActivity> mActivityTestRule = new ActivityTestRule<>(ProfileActivity.class);
+    public ActivityTestRule<AddMedicationActivity> mActivityTestRule = new ActivityTestRule<>(AddMedicationActivity.class);
 
     @Test
-    public void profileActivityTest() {
+    public void addMedicationActivityTest() {
         // Added a sleep statement to match the app's execution delay.
         // The recommended way to handle such scenarios is to use Espresso idling resources:
         // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
@@ -44,175 +49,175 @@ public class ProfileActivityTest {
             e.printStackTrace();
         }
 
-        ViewInteraction textView = onView(
-                allOf(withId(R.id.users_name),
+        ViewInteraction textInputEditText = onView(
+                allOf(withId(R.id.medication_name),
                         childAtPosition(
                                 childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                        1),
-                                0),
-                        isDisplayed()));
-        textView.check(matches(withText("")));
-
-        ViewInteraction textView2 = onView(
-                allOf(withText("name"),
-                        childAtPosition(
-                                childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                        1),
-                                1),
-                        isDisplayed()));
-        textView2.check(matches(withText("name")));
-
-        ViewInteraction textView3 = onView(
-                allOf(withId(R.id.users_gender),
-                        childAtPosition(
-                                childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                        3),
-                                0),
-                        isDisplayed()));
-        textView3.check(matches(withText("")));
-
-        ViewInteraction textView4 = onView(
-                allOf(withText("Gender"),
-                        childAtPosition(
-                                childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                        3),
-                                1),
-                        isDisplayed()));
-        textView4.check(matches(withText("Gender")));
-
-        ViewInteraction textView5 = onView(
-                allOf(withId(R.id.users_age),
-                        childAtPosition(
-                                childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                        5),
-                                0),
-                        isDisplayed()));
-        textView5.check(matches(withText("")));
-
-        ViewInteraction textView6 = onView(
-                allOf(withText("Age"),
-                        childAtPosition(
-                                childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                        5),
-                                1),
-                        isDisplayed()));
-        textView6.check(matches(withText("Age")));
-
-        ViewInteraction textView7 = onView(
-                allOf(withId(R.id.users_location),
-                        childAtPosition(
-                                childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                        7),
-                                0),
-                        isDisplayed()));
-        textView7.check(matches(withText("")));
-
-        ViewInteraction textView8 = onView(
-                allOf(withText("Location"),
-                        childAtPosition(
-                                childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                        7),
-                                1),
-                        isDisplayed()));
-        textView8.check(matches(withText("Location")));
-
-        ViewInteraction textView9 = onView(
-                allOf(withText("Medication"),
-                        childAtPosition(
-                                childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                        1),
-                                0),
-                        isDisplayed()));
-        textView9.check(matches(withText("Medication")));
-
-        ViewInteraction textView10 = onView(
-                allOf(withId(R.id.users_blood_group),
-                        childAtPosition(
-                                childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                        1),
-                                0),
-                        isDisplayed()));
-        textView10.check(matches(withText("")));
-
-        ViewInteraction textView11 = onView(
-                allOf(withText("Blood Group"),
-                        childAtPosition(
-                                childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                        1),
-                                1),
-                        isDisplayed()));
-        textView11.check(matches(withText("Blood Group")));
-
-        ViewInteraction textView12 = onView(
-                allOf(withId(R.id.users_weight),
-                        childAtPosition(
-                                childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                        3),
-                                0),
-                        isDisplayed()));
-        textView12.check(matches(withText("")));
-
-        ViewInteraction textView13 = onView(
-                allOf(withText("Weight"),
-                        childAtPosition(
-                                childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                        3),
-                                1),
-                        isDisplayed()));
-        textView13.check(matches(withText("Weight")));
-
-        ViewInteraction textView14 = onView(
-                allOf(withId(R.id.users_tempereture),
-                        childAtPosition(
-                                childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                        5),
-                                0),
-                        isDisplayed()));
-        textView14.check(matches(withText("")));
-
-        ViewInteraction textView15 = onView(
-                allOf(withText("Tempereture"),
-                        childAtPosition(
-                                childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                        5),
-                                1),
-                        isDisplayed()));
-        textView15.check(matches(withText("Tempereture")));
-
-        ViewInteraction imageButton = onView(
-                allOf(withId(R.id.fab),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
+                                        withClassName(is("android.support.design.widget.TextInputLayout")),
                                         0),
-                                2),
+                                0),
                         isDisplayed()));
-        imageButton.check(matches(isDisplayed()));
+        textInputEditText.perform(replaceText("Panadol"), closeSoftKeyboard());
 
-        ViewInteraction imageButton2 = onView(
-                allOf(withId(R.id.fab),
+        ViewInteraction textInputEditText2 = onView(
+                allOf(withId(R.id.medication_description),
                         childAtPosition(
                                 childAtPosition(
-                                        withId(android.R.id.content),
+                                        withClassName(is("android.support.design.widget.TextInputLayout")),
                                         0),
-                                2),
+                                0),
                         isDisplayed()));
-        imageButton2.check(matches(isDisplayed()));
+        textInputEditText2.perform(replaceText("Pain Killer"), closeSoftKeyboard());
+
+        ViewInteraction textInputEditText3 = onView(
+                allOf(withId(R.id.number_of_doze),
+                        childAtPosition(
+                                childAtPosition(
+                                        withClassName(is("android.support.design.widget.TextInputLayout")),
+                                        0),
+                                0),
+                        isDisplayed()));
+        textInputEditText3.perform(replaceText("2"), closeSoftKeyboard());
+
+        ViewInteraction textInputEditText4 = onView(
+                allOf(withId(R.id.number_of_times_daily),
+                        childAtPosition(
+                                childAtPosition(
+                                        withClassName(is("android.support.design.widget.TextInputLayout")),
+                                        0),
+                                0),
+                        isDisplayed()));
+        textInputEditText4.perform(replaceText("3"), closeSoftKeyboard());
+
+        ViewInteraction appCompatButton = onView(
+                allOf(withId(R.id.btn_date), withText("click for Date"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withClassName(is("android.widget.LinearLayout")),
+                                        4),
+                                1),
+                        isDisplayed()));
+        appCompatButton.perform(click());
+
+        ViewInteraction textInputEditText5 = onView(
+                allOf(withId(R.id.end_date),
+                        childAtPosition(
+                                childAtPosition(
+                                        withClassName(is("android.support.design.widget.TextInputLayout")),
+                                        0),
+                                0),
+                        isDisplayed()));
+        textInputEditText5.perform(replaceText("3"), closeSoftKeyboard());
+
+        ViewInteraction textInputEditText6 = onView(
+                allOf(withId(R.id.alarm_time),
+                        childAtPosition(
+                                childAtPosition(
+                                        withClassName(is("android.support.design.widget.TextInputLayout")),
+                                        0),
+                                0),
+                        isDisplayed()));
+        textInputEditText6.perform(replaceText("1"), closeSoftKeyboard());
+
+        ViewInteraction appCompatButton2 = onView(
+                allOf(withId(R.id.button_add), withText("add"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withClassName(is("android.support.v4.widget.NestedScrollView")),
+                                        0),
+                                7),
+                        isDisplayed()));
+        appCompatButton2.perform(click());
+
+        ViewInteraction editText = onView(
+                allOf(withId(R.id.medication_name), withText("Panadol"),
+                        childAtPosition(
+                                childAtPosition(
+                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
+                                        0),
+                                0),
+                        isDisplayed()));
+        editText.check(matches(withText("Panadol")));
+
+        ViewInteraction editText2 = onView(
+                allOf(withId(R.id.medication_description), withText("Pain Killer"),
+                        childAtPosition(
+                                childAtPosition(
+                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
+                                        0),
+                                0),
+                        isDisplayed()));
+        editText2.check(matches(withText("Pain Killer")));
+
+        ViewInteraction editText3 = onView(
+                allOf(withId(R.id.number_of_doze), withText("2"),
+                        childAtPosition(
+                                childAtPosition(
+                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
+                                        0),
+                                0),
+                        isDisplayed()));
+        editText3.check(matches(withText("2")));
+
+        ViewInteraction editText4 = onView(
+                allOf(withId(R.id.number_of_times_daily), withText("3"),
+                        childAtPosition(
+                                childAtPosition(
+                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
+                                        0),
+                                0),
+                        isDisplayed()));
+        editText4.check(matches(withText("3")));
+
+        ViewInteraction button = onView(
+                allOf(withId(R.id.btn_date),
+                        childAtPosition(
+                                childAtPosition(
+                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
+                                        4),
+                                1),
+                        isDisplayed()));
+        button.check(matches(isDisplayed()));
+
+        ViewInteraction editText5 = onView(
+                allOf(withId(R.id.end_date), withText("3"),
+                        childAtPosition(
+                                childAtPosition(
+                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
+                                        0),
+                                0),
+                        isDisplayed()));
+        editText5.check(matches(withText("3")));
+
+        ViewInteraction editText6 = onView(
+                allOf(withId(R.id.alarm_time), withText("1"),
+                        childAtPosition(
+                                childAtPosition(
+                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
+                                        0),
+                                0),
+                        isDisplayed()));
+        editText6.check(matches(withText("1")));
+
+        ViewInteraction button2 = onView(
+                allOf(withId(R.id.button_add),
+                        childAtPosition(
+                                childAtPosition(
+                                        IsInstanceOf.<View>instanceOf(android.widget.FrameLayout.class),
+                                        0),
+                                7),
+                        isDisplayed()));
+        button2.check(matches(isDisplayed()));
+
+        ViewInteraction button3 = onView(
+                allOf(withId(R.id.button_add),
+                        childAtPosition(
+                                childAtPosition(
+                                        IsInstanceOf.<View>instanceOf(android.widget.FrameLayout.class),
+                                        0),
+                                7),
+                        isDisplayed()));
+        button3.check(matches(isDisplayed()));
 
     }
 

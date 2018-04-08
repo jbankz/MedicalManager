@@ -158,6 +158,7 @@ public class AddMedicationActivity extends AppCompatActivity implements View.OnC
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
+            /**Note: REMEMBER TO COMMENT THIS INTENT LINE IN OTHER TO HAVE AN ACCURATE ESPRESSO TEST RESULT OF THIS ACTIVITY/FILE**/
             // sets reminder and calls next activity
             startActivity(new Intent(AddMedicationActivity.this, MainActivity.class));
             // sets notification

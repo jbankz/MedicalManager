@@ -20,21 +20,26 @@ import org.junit.runner.RunWith;
 import bankzworld.com.R;
 
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
+import static android.support.test.espresso.action.ViewActions.replaceText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.is;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class ProfileActivityTest {
+public class PatientInfoActivityTest {
 
     @Rule
-    public ActivityTestRule<ProfileActivity> mActivityTestRule = new ActivityTestRule<>(ProfileActivity.class);
+    public ActivityTestRule<PatientInfoActivity> mActivityTestRule = new ActivityTestRule<>(PatientInfoActivity.class);
 
     @Test
-    public void profileActivityTest() {
+    public void patientInfoActivityTest() {
         // Added a sleep statement to match the app's execution delay.
         // The recommended way to handle such scenarios is to use Espresso idling resources:
         // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
@@ -44,155 +49,155 @@ public class ProfileActivityTest {
             e.printStackTrace();
         }
 
-        ViewInteraction textView = onView(
-                allOf(withId(R.id.users_name),
+        ViewInteraction textInputEditText = onView(
+                allOf(withId(R.id.patient_name),
                         childAtPosition(
                                 childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                        1),
+                                        withClassName(is("android.support.design.widget.TextInputLayout")),
+                                        0),
                                 0),
                         isDisplayed()));
-        textView.check(matches(withText("")));
+        textInputEditText.perform(click());
 
-        ViewInteraction textView2 = onView(
-                allOf(withText("name"),
+        ViewInteraction textInputEditText2 = onView(
+                allOf(withId(R.id.patient_name),
                         childAtPosition(
                                 childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                        1),
-                                1),
-                        isDisplayed()));
-        textView2.check(matches(withText("name")));
-
-        ViewInteraction textView3 = onView(
-                allOf(withId(R.id.users_gender),
-                        childAtPosition(
-                                childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                        3),
+                                        withClassName(is("android.support.design.widget.TextInputLayout")),
+                                        0),
                                 0),
                         isDisplayed()));
-        textView3.check(matches(withText("")));
+        textInputEditText2.perform(replaceText("jaycee"), closeSoftKeyboard());
 
-        ViewInteraction textView4 = onView(
-                allOf(withText("Gender"),
+        ViewInteraction textInputEditText3 = onView(
+                allOf(withId(R.id.patient_age),
                         childAtPosition(
                                 childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                        3),
-                                1),
-                        isDisplayed()));
-        textView4.check(matches(withText("Gender")));
-
-        ViewInteraction textView5 = onView(
-                allOf(withId(R.id.users_age),
-                        childAtPosition(
-                                childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                        5),
+                                        withClassName(is("android.support.design.widget.TextInputLayout")),
+                                        0),
                                 0),
                         isDisplayed()));
-        textView5.check(matches(withText("")));
+        textInputEditText3.perform(replaceText("22"), closeSoftKeyboard());
 
-        ViewInteraction textView6 = onView(
-                allOf(withText("Age"),
+        ViewInteraction textInputEditText4 = onView(
+                allOf(withId(R.id.patient_location),
                         childAtPosition(
                                 childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                        5),
-                                1),
-                        isDisplayed()));
-        textView6.check(matches(withText("Age")));
-
-        ViewInteraction textView7 = onView(
-                allOf(withId(R.id.users_location),
-                        childAtPosition(
-                                childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                        7),
+                                        withClassName(is("android.support.design.widget.TextInputLayout")),
+                                        0),
                                 0),
                         isDisplayed()));
-        textView7.check(matches(withText("")));
+        textInputEditText4.perform(replaceText("abuja"), closeSoftKeyboard());
 
-        ViewInteraction textView8 = onView(
-                allOf(withText("Location"),
-                        childAtPosition(
-                                childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                        7),
-                                1),
-                        isDisplayed()));
-        textView8.check(matches(withText("Location")));
-
-        ViewInteraction textView9 = onView(
-                allOf(withText("Medication"),
-                        childAtPosition(
-                                childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                        1),
-                                0),
-                        isDisplayed()));
-        textView9.check(matches(withText("Medication")));
-
-        ViewInteraction textView10 = onView(
+        ViewInteraction textInputEditText5 = onView(
                 allOf(withId(R.id.users_blood_group),
                         childAtPosition(
                                 childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                        1),
+                                        withClassName(is("android.support.design.widget.TextInputLayout")),
+                                        0),
                                 0),
                         isDisplayed()));
-        textView10.check(matches(withText("")));
+        textInputEditText5.perform(replaceText("o"), closeSoftKeyboard());
 
-        ViewInteraction textView11 = onView(
-                allOf(withText("Blood Group"),
-                        childAtPosition(
-                                childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                        1),
-                                1),
-                        isDisplayed()));
-        textView11.check(matches(withText("Blood Group")));
-
-        ViewInteraction textView12 = onView(
+        ViewInteraction textInputEditText6 = onView(
                 allOf(withId(R.id.users_weight),
                         childAtPosition(
                                 childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                        3),
+                                        withClassName(is("android.support.design.widget.TextInputLayout")),
+                                        0),
                                 0),
                         isDisplayed()));
-        textView12.check(matches(withText("")));
+        textInputEditText6.perform(replaceText("65"), closeSoftKeyboard());
 
-        ViewInteraction textView13 = onView(
-                allOf(withText("Weight"),
-                        childAtPosition(
-                                childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                        3),
-                                1),
-                        isDisplayed()));
-        textView13.check(matches(withText("Weight")));
-
-        ViewInteraction textView14 = onView(
+        ViewInteraction textInputEditText7 = onView(
                 allOf(withId(R.id.users_tempereture),
                         childAtPosition(
                                 childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                        5),
+                                        withClassName(is("android.support.design.widget.TextInputLayout")),
+                                        0),
                                 0),
                         isDisplayed()));
-        textView14.check(matches(withText("")));
+        textInputEditText7.perform(click());
 
-        ViewInteraction textView15 = onView(
-                allOf(withText("Tempereture"),
+        ViewInteraction textInputEditText8 = onView(
+                allOf(withId(R.id.users_tempereture),
+                        childAtPosition(
+                                childAtPosition(
+                                        withClassName(is("android.support.design.widget.TextInputLayout")),
+                                        0),
+                                0),
+                        isDisplayed()));
+        textInputEditText8.perform(replaceText("37"), closeSoftKeyboard());
+
+        ViewInteraction floatingActionButton = onView(
+                allOf(withId(R.id.fab),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                2),
+                        isDisplayed()));
+        floatingActionButton.perform(click());
+
+        ViewInteraction editText = onView(
+                allOf(withId(R.id.patient_name), withText("jaycee"),
                         childAtPosition(
                                 childAtPosition(
                                         IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                        5),
-                                1),
+                                        0),
+                                0),
                         isDisplayed()));
-        textView15.check(matches(withText("Tempereture")));
+        editText.check(matches(withText("jaycee")));
+
+        ViewInteraction editText2 = onView(
+                allOf(withId(R.id.patient_age), withText("22"),
+                        childAtPosition(
+                                childAtPosition(
+                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
+                                        0),
+                                0),
+                        isDisplayed()));
+        editText2.check(matches(withText("22")));
+
+        ViewInteraction editText3 = onView(
+                allOf(withId(R.id.patient_location), withText("abuja"),
+                        childAtPosition(
+                                childAtPosition(
+                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
+                                        0),
+                                0),
+                        isDisplayed()));
+        editText3.check(matches(withText("abuja")));
+
+        ViewInteraction editText4 = onView(
+                allOf(withId(R.id.users_blood_group), withText("o"),
+                        childAtPosition(
+                                childAtPosition(
+                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
+                                        0),
+                                0),
+                        isDisplayed()));
+        editText4.check(matches(withText("o")));
+
+        ViewInteraction editText5 = onView(
+                allOf(withId(R.id.users_weight), withText("65"),
+                        childAtPosition(
+                                childAtPosition(
+                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
+                                        0),
+                                0),
+                        isDisplayed()));
+        editText5.check(matches(withText("65")));
+
+        ViewInteraction editText6 = onView(
+                allOf(withId(R.id.users_tempereture), withText("37"),
+                        childAtPosition(
+                                childAtPosition(
+                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
+                                        0),
+                                0),
+                        isDisplayed()));
+        editText6.check(matches(withText("37")));
 
         ViewInteraction imageButton = onView(
                 allOf(withId(R.id.fab),

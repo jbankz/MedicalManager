@@ -71,14 +71,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.btn_signup:
                 // calls the signup activity
                 startActivity(new Intent(LoginActivity.this, SignupActivity.class));
-                finish();
                 break;
             case R.id.btn_login:
                 performLogin();
                 break;
             case R.id.btn_reset_password:
                 startActivity(new Intent(LoginActivity.this, ResetPasswordActivity.class));
-                finish();
                 break;
             default:
                 break;
@@ -123,6 +121,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             }
                         } else {
                             Log.d(TAG, "onComplete: Successful");
+                            /**Note: REMEMBER TO COMMENT THIS INTENT LINE IN OTHER TO HAVE AN ACCURATE ESPRESSO TEST RESULT OF THIS ACTIVITY/FILE**/
                             startActivity(new Intent(LoginActivity.this, MainActivity.class));
                             finish();
                         }

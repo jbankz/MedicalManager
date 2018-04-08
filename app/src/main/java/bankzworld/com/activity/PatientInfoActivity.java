@@ -83,9 +83,10 @@ public class PatientInfoActivity extends AppCompatActivity {
     private void createUser(String name, String gender, String age, String location, String bloodGroup, String weight, String temp) {
         // stores details to prefs
         saveUserDetails(name, gender, age, location, bloodGroup, weight, temp);
+
+        /**Note: REMEMBER TO COMMENT THIS INTENT LINE IN OTHER TO HAVE AN ACCURATE ESPRESSO TEST RESULT OF THIS ACTIVITY/FILE**/
         // calls next activity
         startActivity(new Intent(PatientInfoActivity.this, ProfileActivity.class));
-        // ends activity
         finish();
 
     }

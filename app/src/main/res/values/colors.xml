@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#4527A0</color>
+    <color name="colorPrimaryDark">#311B92</color>
     <color name="colorAccent">#FF4081</color>
     <color name="cardViewBackground">#F0F0F0</color>
     <color name="colorGreen">#00491f</color>
+    <color name="colorGreenAccent">#6BEFAD</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="textHintColor">#c7d3da</color>
     <color name="colorBlue">#e70032ff</color>
+    <color name="colorPurple">#691A99</color>
+    <color name="colorLightPurple">#9B26AF</color>
     <color name="colorShadow">#9c9c9c</color>
 </resources>

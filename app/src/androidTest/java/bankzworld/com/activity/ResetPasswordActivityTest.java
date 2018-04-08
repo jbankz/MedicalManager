@@ -57,17 +57,7 @@ public class ResetPasswordActivityTest {
                                         0),
                                 0),
                         isDisplayed()));
-        appCompatEditText.perform(click());
-
-        ViewInteraction appCompatEditText2 = onView(
-                allOf(withId(R.id.email),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("android.support.design.widget.TextInputLayout")),
-                                        0),
-                                0),
-                        isDisplayed()));
-        appCompatEditText2.perform(replaceText("vsquare396@gmail.com"), closeSoftKeyboard());
+        appCompatEditText.perform(replaceText("vsquare396@gmail.com"), closeSoftKeyboard());
 
         ViewInteraction appCompatButton = onView(
                 allOf(withId(R.id.btn_reset_password), withText("Reset Password"),
@@ -78,26 +68,6 @@ public class ResetPasswordActivityTest {
                                 4),
                         isDisplayed()));
         appCompatButton.perform(click());
-
-        ViewInteraction textView = onView(
-                allOf(withText("Forgot password?"),
-                        childAtPosition(
-                                childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                        0),
-                                1),
-                        isDisplayed()));
-        textView.check(matches(withText("Forgot password?")));
-
-        ViewInteraction textView2 = onView(
-                allOf(withText("We just need your registered Email Id to sent you password reset instructions."),
-                        childAtPosition(
-                                childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                        0),
-                                2),
-                        isDisplayed()));
-        textView2.check(matches(withText("We just need your registered Email Id to sent you password reset instructions.")));
 
         ViewInteraction editText = onView(
                 allOf(withId(R.id.email), withText("vsquare396@gmail.com"),
@@ -120,34 +90,14 @@ public class ResetPasswordActivityTest {
         button.check(matches(isDisplayed()));
 
         ViewInteraction button2 = onView(
-                allOf(withId(R.id.btn_back),
+                allOf(withId(R.id.btn_reset_password),
                         childAtPosition(
                                 childAtPosition(
                                         IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
                                         0),
-                                5),
+                                4),
                         isDisplayed()));
         button2.check(matches(isDisplayed()));
-
-        ViewInteraction progressBar = onView(
-                allOf(withId(R.id.pb_loading),
-                        childAtPosition(
-                                childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                        0),
-                                6),
-                        isDisplayed()));
-        progressBar.check(matches(isDisplayed()));
-
-        ViewInteraction progressBar2 = onView(
-                allOf(withId(R.id.pb_loading),
-                        childAtPosition(
-                                childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class),
-                                        0),
-                                6),
-                        isDisplayed()));
-        progressBar2.check(matches(isDisplayed()));
 
     }
 
