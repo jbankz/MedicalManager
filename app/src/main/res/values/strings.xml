@@ -29,7 +29,7 @@
     <string name="full_name">Full name</string>
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="title_activity_edit_info">EditInfoActivity</string>
-    <string name="network_error_message">please connect to network...</string>
+    <string name="network_error_message">please connect to network &#8230;</string>
     <string name="reset_message">We have sent you instructions to reset your password!</string>
     <string name="error_reset_message">Failed to send reset email!</string>
     <string name="email_error_message">Enter email address!</string>
@@ -42,4 +42,5 @@
     <string name="help_one">Hi there! Welcome to Medical Manger, an application that helps users to keep record of their medications and also serves as a reminder to when the medication is to be taken and its duration.</string>
     <string name="help_two">To get medications by category,</string>
     <string name="help_three"> Click and hold the medication list to be able to view and sort medications by months.</string>
+    <string name="search">Search</string>
 </resources>
