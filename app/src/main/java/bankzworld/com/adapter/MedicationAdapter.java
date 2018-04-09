@@ -76,7 +76,7 @@ public class MedicationAdapter extends RecyclerView.Adapter<MedicationAdapter.Vi
         return medicationList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnCreateContextMenuListener {
 
         TextView mName, mDesc;
 
@@ -86,12 +86,19 @@ public class MedicationAdapter extends RecyclerView.Adapter<MedicationAdapter.Vi
             mDesc = (TextView) itemView.findViewById(R.id.desc);
 
             itemView.setOnClickListener(this);
+            itemView.setOnCreateContextMenuListener(this);
+
         }
 
         @Override
         public void onClick(View view) {
             Context context = view.getContext();
             getAlertDialog(context);
+        }
+
+        @Override
+        public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
+
         }
 
         public void getAlertDialog(Context context) {
@@ -104,8 +111,9 @@ public class MedicationAdapter extends RecyclerView.Adapter<MedicationAdapter.Vi
                     + medication.getDescription()
                     + " drug and should be taken "
                     + medication.getNumOfDoze() + "/" + medication.getNumOfTimes() +
-                    " times a day" + "\n" + " This drug is expected to last for "
-                    + medication.getEndDate() + " days/");
+                    " times daily" + "\n" + "This drug was started today" +
+                    " is expected to last for "
+                    + medication.getEndDate() + " days");
 
             builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                 @Override
@@ -116,5 +124,6 @@ public class MedicationAdapter extends RecyclerView.Adapter<MedicationAdapter.Vi
             AlertDialog alertDialog = builder.create();
             alertDialog.show();
         }
+
     }
 }

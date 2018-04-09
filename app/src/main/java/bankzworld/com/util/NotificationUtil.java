@@ -17,8 +17,8 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
-import bankzworld.com.activity.MainActivity;
 import bankzworld.com.R;
+import bankzworld.com.activity.MainActivity;
 import bankzworld.com.background.MyBroadcastReceiver;
 
 import static android.content.Context.ALARM_SERVICE;
@@ -52,7 +52,7 @@ public class NotificationUtil {
     private static Bitmap largeIcon(Context context) {
         Resources resources = context.getResources();
 
-        Bitmap largeIcon = BitmapFactory.decodeResource(resources, R.drawable.notification_icon);
+        Bitmap largeIcon = BitmapFactory.decodeResource(resources, R.drawable.dr);
         return largeIcon;
     }
 
@@ -66,7 +66,7 @@ public class NotificationUtil {
         // set a notification builder
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context)
                 .setColor(ContextCompat.getColor(context, R.color.colorPrimary))
-                .setSmallIcon(R.drawable.notification_icon)
+                .setSmallIcon(R.drawable.dr)
                 .setLargeIcon(largeIcon(context))
                 .setContentTitle(context.getString(R.string.notification_title))
                 .setContentText(context.getString(R.string.notification_body))

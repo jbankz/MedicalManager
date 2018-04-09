@@ -40,7 +40,7 @@ import bankzworld.com.util.NotificationUtil;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivityFragment extends Fragment {
+public class MainActivityFragment extends Fragment{
 
     private static final String TAG = "MainActivityFragment";
 
@@ -87,7 +87,7 @@ public class MainActivityFragment extends Fragment {
             public void onClick(View view) {
                 // starts another activity
                 startActivity(new Intent(getContext(), AddMedicationActivity.class));
-
+                getActivity().finish();
             }
         });
 

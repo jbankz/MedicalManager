@@ -4,10 +4,8 @@ import android.annotation.SuppressLint;
 import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -81,7 +79,7 @@ public class AddMedicationActivity extends AppCompatActivity implements View.OnC
                 mDozeNumber = mNumberOfDoze.getText().toString();
                 mNumberOfTimesDaily = mNumberOfTimes.getText().toString();
                 mCurrentDate = mEditDate.getText().toString();
-                mNumberOfDays = mEditDate.getText().toString();
+                mNumberOfDays = mEndDate.getText().toString();
                 setAlarm = mAlarm.getText().toString();
 
                 // calls validation method
@@ -103,9 +101,11 @@ public class AddMedicationActivity extends AppCompatActivity implements View.OnC
      **/
     private void getCurrentDateAndtTime() {
         Calendar calendar = Calendar.getInstance();
+        @SuppressLint("SimpleDateFormat")
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy" + " , " + "HH:mm:ss");
 
         // gets just the month format to store in the database
+        @SuppressLint("SimpleDateFormat")
         SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("MM");
 
         // gets the format for month and year alone to use in querying the database
@@ -163,6 +163,7 @@ public class AddMedicationActivity extends AppCompatActivity implements View.OnC
             startActivity(new Intent(AddMedicationActivity.this, MainActivity.class));
             // sets notification
             NotificationUtil.setAlarm(AddMedicationActivity.this, setAlarm);
+            finish();
         }
     }
 }
