@@ -9,9 +9,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-
 import bankzworld.com.R;
 import bankzworld.com.data.User;
 import butterknife.BindView;
@@ -38,10 +35,6 @@ public class ProfileActivity extends AppCompatActivity {
     @BindView(R.id.fab)
     FloatingActionButton fb;
 
-    //Firebase
-    private FirebaseStorage storage;
-    private StorageReference storageReference;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,12 +45,7 @@ public class ProfileActivity extends AppCompatActivity {
         // injects views
         ButterKnife.bind(this);
 
-        // initialises storage
-        storage = FirebaseStorage.getInstance();
-        storageReference = storage.getReference();
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    //    getSupportActionBar().setTitle(User.getUserToken(this));
 
         this.setTitle(User.getUserToken(this));
 
