@@ -125,8 +125,8 @@ public class AddMedicationActivity extends AppCompatActivity implements View.OnC
     /**
      * validate the inputs
      **/
-    private boolean dataValidation(String medName, String medDescription,
-                                   String numOfDoze, String numOfTimes, String date, String endDate, String month) {
+    public boolean dataValidation(String medName, String medDescription,
+                                  String numOfDoze, String numOfTimes, String date, String endDate, String month) {
 
         if (medName.isEmpty()) {
             mMedicationName.setError(getString(R.string.error_message));
@@ -142,6 +142,7 @@ public class AddMedicationActivity extends AppCompatActivity implements View.OnC
             mEndDate.setError(getString(R.string.error_message));
         } else {
             // insert to database
+            /**WHEN TESTING, REMEMBER TO COMMENT ON THIS LINE WHEN PERFORMING A JUNIT4 TEST, AS ASYNC TASK IS NOT MOCKED**/
             new PerformInsertion().execute();
         }
         return true;
