@@ -87,7 +87,6 @@ public class MainActivityFragment extends Fragment{
             public void onClick(View view) {
                 // starts another activity
                 startActivity(new Intent(getContext(), AddMedicationActivity.class));
-                getActivity().finish();
             }
         });
 
