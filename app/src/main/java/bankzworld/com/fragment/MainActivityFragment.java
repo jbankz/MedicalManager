@@ -40,7 +40,7 @@ import bankzworld.com.util.NotificationUtil;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivityFragment extends Fragment{
+public class MainActivityFragment extends Fragment {
 
     private static final String TAG = "MainActivityFragment";
 
@@ -284,7 +284,7 @@ public class MainActivityFragment extends Fragment{
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             // disables alarm in case there is an alarm set or not
-            NotificationUtil.setAlarm(getContext(), "");
+            NotificationUtil.setAlarm(getContext(), "", "", "");
         }
     }
 

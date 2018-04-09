@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorShadow"
+    android:background="@color/colorWhite"
     android:fillViewport="true"
     android:orientation="vertical">
 
@@ -23,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Drug name"
                 android:inputType="text"
-                android:textColor="@color/colorWhite"
+                android:textColor="@android:color/black"
                 android:textStyle="normal" />
 
         </android.support.design.widget.TextInputLayout>
@@ -37,8 +36,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Drug description"
+                android:textColor="@android:color/black"
                 android:inputType="text"
-                android:textColor="@color/colorWhite"
                 android:textStyle="normal" />
 
         </android.support.design.widget.TextInputLayout>
@@ -54,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Number of Doze"
                 android:inputType="number"
-                android:textColor="@color/colorWhite"
+                android:textColor="@android:color/black"
                 android:textStyle="normal" />
 
         </android.support.design.widget.TextInputLayout>
@@ -69,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Number of Times Daily"
                 android:inputType="number"
-                android:textColor="@color/colorWhite"
+                android:textColor="@android:color/black"
                 android:textStyle="normal" />
 
         </android.support.design.widget.TextInputLayout>
@@ -87,7 +86,7 @@
                 android:enabled="false"
                 android:hint="Date Started"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
-                android:textColor="@android:color/white"
+                android:textColor="@android:color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -98,7 +97,7 @@
                 android:layout_weight="1"
                 android:background="@null"
                 android:text="click for Date"
-                android:textColor="@color/colorWhite"
+                android:textColor="@android:color/black"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -112,7 +111,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Number of days"
                 android:inputType="number"
-                android:textColor="@color/colorWhite"
+                android:textColor="@android:color/black"
                 android:textStyle="normal" />
 
         </android.support.design.widget.TextInputLayout>
@@ -127,7 +126,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Alarm"
                 android:inputType="number"
-                android:textColor="@color/colorWhite"
+                android:textColor="@android:color/black"
                 android:textStyle="normal" />
 
         </android.support.design.widget.TextInputLayout>

@@ -86,15 +86,23 @@ public class NotificationUtil {
     }
 
     // this method is used to set the alarm
-    public static void setAlarm(Context context, String time) {
+    public static void setAlarm(Context context, String hour, String minute, String time) {
         if (!time.equals("")) {
-            int i = Integer.parseInt(time);
+            int mHour = Integer.parseInt(hour);
+            int mMinute = Integer.parseInt(minute);
+            int mTime = Integer.parseInt(time);
+
             intent = new Intent(context, MyBroadcastReceiver.class);
             pendingIntent = PendingIntent.getBroadcast(context.getApplicationContext(), 280192, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(System.currentTimeMillis());
+            calendar.set(Calendar.HOUR_OF_DAY, mHour);
+            calendar.set(Calendar.MINUTE, mMinute);
+
             alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
-            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, Calendar.getInstance().getTimeInMillis() + (i * 1000), 10000
-                    , pendingIntent);
-            Toast.makeText(context, "Alarm will set in " + i + " seconds", Toast.LENGTH_LONG).show();
+            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, Calendar.getInstance().getTimeInMillis(), 1000 * 60 * mTime, pendingIntent);
+            Toast.makeText(context, "Alarm will set in " + mTime + " minutes", Toast.LENGTH_LONG).show();
         } else {
             if (alarmManager != null) {
                 alarmManager.cancel(pendingIntent);
