@@ -36,8 +36,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Drug description"
-                android:textColor="@android:color/black"
                 android:inputType="text"
+                android:textColor="@android:color/black"
                 android:textStyle="normal" />
 
         </android.support.design.widget.TextInputLayout>
@@ -110,21 +110,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Number of days"
-                android:inputType="number"
-                android:textColor="@android:color/black"
-                android:textStyle="normal" />
-
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/alarm_time"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Alarm"
                 android:inputType="number"
                 android:textColor="@android:color/black"
                 android:textStyle="normal" />

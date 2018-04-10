@@ -15,14 +15,11 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
 import android.widget.Toast;
 
-import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
 
 import bankzworld.com.R;
 import bankzworld.com.activity.MainActivity;
-import bankzworld.com.background.MyBroadcastReceiver;
-
-import static android.content.Context.ALARM_SERVICE;
+import bankzworld.com.background.AlarmReceiver;
 
 public class NotificationUtil {
 
@@ -90,17 +87,15 @@ public class NotificationUtil {
     public static void setAlarm(Context context, String time) {
         if (!time.equals("")) {
             int mTime = Integer.parseInt(time);
-
-            intent = new Intent(context, MyBroadcastReceiver.class);
-            pendingIntent = PendingIntent.getBroadcast(context.getApplicationContext(), 280192, intent, PendingIntent.FLAG_CANCEL_CURRENT);
-            alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
-            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, Calendar.getInstance().getTimeInMillis(), (int) (TimeUnit.MINUTES.toSeconds(mTime)), pendingIntent);
-            Toast.makeText(context, "Alarm will set in " + mTime + " minutes", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(context, AlarmReceiver.class);
+            pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+            AlarmManager manager = (AlarmManager) context.getSystemService(context.ALARM_SERVICE);
+            manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), (int) (TimeUnit.MINUTES.toSeconds(mTime)), pendingIntent);
+            Toast.makeText(context, "Alarm set for " + time + " Minutes", Toast.LENGTH_SHORT).show();
         } else {
             if (alarmManager != null) {
                 alarmManager.cancel(pendingIntent);
-                Toast.makeText(context, "Alarm Disabled !!", Toast.LENGTH_LONG).show();
-
+                Toast.makeText(context, "Alarm Disabled", Toast.LENGTH_SHORT).show();
             }
         }
     }

@@ -5,24 +5,18 @@ import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import bankzworld.com.R;
-import bankzworld.com.data.Medication;
-import bankzworld.com.fragment.MainActivityFragment;
+import bankzworld.com.pojo.Medication;
 
 public class MedicationAdapter extends RecyclerView.Adapter<MedicationAdapter.ViewHolder> {
 

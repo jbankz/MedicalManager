@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -12,6 +13,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -24,6 +26,7 @@ import com.google.firebase.auth.FirebaseUser;
 import bankzworld.com.R;
 import bankzworld.com.fragment.MainActivityFragment;
 import bankzworld.com.network.NetworkClass;
+import bankzworld.com.util.NotificationUtil;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity
@@ -119,10 +122,16 @@ public class MainActivity extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
+        if (id == R.id.action_set_alarm) {
+            // disables the alarm
+            getAlarmDialog();
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
     }
 
-    public void getAlertDialog() {
+    private void getAlertDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Info");
         builder.setCancelable(false);
@@ -166,9 +175,40 @@ public class MainActivity extends AppCompatActivity
             } else {
                 deleteAccount();
             }
+        } else if (id == R.id.nav_alarm) {
+            Log.d(TAG, "onNavigationItemSelected: alarm called");
+            NotificationUtil.setAlarm(MainActivity.this, "");
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    private void getAlarmDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final TextInputEditText editText = new TextInputEditText(this);
+        editText.setHint("Time interval");
+        editText.setInputType(2);
+        builder.setTitle("Alarm");
+        builder.setCancelable(false);
+        builder.setView(editText);
+        builder.setIcon(R.drawable.ic_add_alarm);
+        builder.setPositiveButton("Set", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                String getAlarm = editText.getText().toString();
+                NotificationUtil.setAlarm(MainActivity.this, getAlarm);
+                dialogInterface.dismiss();
+            }
+        });
+        builder.setNegativeButton("Abort", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
 }

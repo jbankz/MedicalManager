@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import bankzworld.com.R;
-import bankzworld.com.data.User;
+import bankzworld.com.pojo.User;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 

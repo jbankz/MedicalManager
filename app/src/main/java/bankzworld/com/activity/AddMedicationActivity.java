@@ -18,8 +18,7 @@ import java.util.Calendar;
 
 import bankzworld.com.R;
 import bankzworld.com.data.AppDatabase;
-import bankzworld.com.data.Medication;
-import bankzworld.com.util.NotificationUtil;
+import bankzworld.com.pojo.Medication;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -35,8 +34,6 @@ public class AddMedicationActivity extends AppCompatActivity implements View.OnC
     TextInputEditText mNumberOfDoze;
     @BindView(R.id.number_of_times_daily)
     TextInputEditText mNumberOfTimes;
-    @BindView(R.id.alarm_time)
-    TextInputEditText mAlarm;
     @BindView(R.id.date)
     EditText mEditDate;
     @BindView(R.id.end_date)
@@ -48,7 +45,7 @@ public class AddMedicationActivity extends AppCompatActivity implements View.OnC
     public AppDatabase db;
     Medication medication;
     // declaration of variables
-    private String mName, mDescription, mDozeNumber, mNumberOfTimesDaily, mNumberOfDays, mCurrentDate, mMonth, setAlarm;
+    private String mName, mDescription, mDozeNumber, mNumberOfTimesDaily, mNumberOfDays, mCurrentDate, mMonth;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -80,7 +77,6 @@ public class AddMedicationActivity extends AppCompatActivity implements View.OnC
                 mNumberOfTimesDaily = mNumberOfTimes.getText().toString();
                 mCurrentDate = mEditDate.getText().toString();
                 mNumberOfDays = mEndDate.getText().toString();
-                setAlarm = mAlarm.getText().toString();
 
                 // calls validation method
                 if (!dataValidation(mName, mDescription, mDozeNumber, mNumberOfTimesDaily, mCurrentDate, mNumberOfDays, mMonth)) {
@@ -162,8 +158,6 @@ public class AddMedicationActivity extends AppCompatActivity implements View.OnC
             /**Note: REMEMBER TO COMMENT THIS INTENT LINE IN OTHER TO HAVE AN ACCURATE ESPRESSO TEST RESULT OF THIS ACTIVITY/FILE**/
             // sets reminder and calls next activity
             startActivity(new Intent(AddMedicationActivity.this, MainActivity.class));
-            // sets notification
-            NotificationUtil.setAlarm(AddMedicationActivity.this, setAlarm);
             finish();
         }
     }

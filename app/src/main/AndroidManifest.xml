@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".background.MyBroadcastReceiver" />
+        <receiver android:name=".background.AlarmReceiver" />
 
         <activity
             android:name=".activity.AddMedicationActivity"

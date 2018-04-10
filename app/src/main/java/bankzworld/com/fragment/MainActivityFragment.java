@@ -35,7 +35,7 @@ import bankzworld.com.activity.AddMedicationActivity;
 import bankzworld.com.activity.LoginActivity;
 import bankzworld.com.adapter.MedicationAdapter;
 import bankzworld.com.data.AppDatabase;
-import bankzworld.com.data.Medication;
+import bankzworld.com.pojo.Medication;
 import bankzworld.com.util.NotificationUtil;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -284,7 +284,6 @@ public class MainActivityFragment extends Fragment {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            // disables alarm in case there is an alarm set or not
             NotificationUtil.setAlarm(getContext(), "");
         }
     }

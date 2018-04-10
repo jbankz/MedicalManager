@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import bankzworld.com.R;
 import bankzworld.com.network.NetworkClass;
-import bankzworld.com.data.User;
+import bankzworld.com.pojo.User;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
