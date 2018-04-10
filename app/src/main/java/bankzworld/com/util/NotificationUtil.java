@@ -16,6 +16,7 @@ import android.support.v4.content.ContextCompat;
 import android.widget.Toast;
 
 import java.util.Calendar;
+import java.util.concurrent.TimeUnit;
 
 import bankzworld.com.R;
 import bankzworld.com.activity.MainActivity;
@@ -86,23 +87,14 @@ public class NotificationUtil {
     }
 
     // this method is used to set the alarm
-    public static void setAlarm(Context context, String hour, String minute, String time) {
+    public static void setAlarm(Context context, String time) {
         if (!time.equals("")) {
-
-            int mHour = Integer.parseInt(hour);
-            int mMinute = Integer.parseInt(minute);
             int mTime = Integer.parseInt(time);
 
             intent = new Intent(context, MyBroadcastReceiver.class);
             pendingIntent = PendingIntent.getBroadcast(context.getApplicationContext(), 280192, intent, PendingIntent.FLAG_CANCEL_CURRENT);
-
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTimeInMillis(System.currentTimeMillis());
-            calendar.set(Calendar.HOUR_OF_DAY, mHour);
-            calendar.set(Calendar.MINUTE, mMinute);
-
             alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
-            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, Calendar.getInstance().getTimeInMillis(), 1000 * 60 * mTime, pendingIntent);
+            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, Calendar.getInstance().getTimeInMillis(), (int) (TimeUnit.MINUTES.toSeconds(mTime)), pendingIntent);
             Toast.makeText(context, "Alarm will set in " + mTime + " minutes", Toast.LENGTH_LONG).show();
         } else {
             if (alarmManager != null) {
@@ -112,5 +104,4 @@ public class NotificationUtil {
             }
         }
     }
-
 }

@@ -48,7 +48,7 @@ public class AddMedicationActivity extends AppCompatActivity implements View.OnC
     public AppDatabase db;
     Medication medication;
     // declaration of variables
-    private String mName, mDescription, mDozeNumber, mNumberOfTimesDaily, mNumberOfDays, mCurrentDate, mMonth, mHour, mMinute, setAlarm;
+    private String mName, mDescription, mDozeNumber, mNumberOfTimesDaily, mNumberOfDays, mCurrentDate, mMonth, setAlarm;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -104,19 +104,12 @@ public class AddMedicationActivity extends AppCompatActivity implements View.OnC
         @SuppressLint("SimpleDateFormat")
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy" + " , " + "HH:mm:ss");
 
-        SimpleDateFormat sfHour = new SimpleDateFormat("HH");
-        SimpleDateFormat sfMinute = new SimpleDateFormat("mm");
-
         // gets just the month format to store in the database
         @SuppressLint("SimpleDateFormat")
         SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("MM");
 
         // gets the format for month and year alone to use in querying the database
         mMonth = simpleDateFormat1.format(calendar.getTime());
-
-        // gets the format for hour and minutes
-        mHour = sfHour.format(calendar.getTime());
-        mMinute = sfMinute.format(calendar.getTime());
 
         // gets dates and store in a String variable
         mEditDate.setText(simpleDateFormat.format(calendar.getTime()));
@@ -170,7 +163,7 @@ public class AddMedicationActivity extends AppCompatActivity implements View.OnC
             // sets reminder and calls next activity
             startActivity(new Intent(AddMedicationActivity.this, MainActivity.class));
             // sets notification
-            NotificationUtil.setAlarm(AddMedicationActivity.this, mHour, mMinute, setAlarm);
+            NotificationUtil.setAlarm(AddMedicationActivity.this, setAlarm);
             finish();
         }
     }

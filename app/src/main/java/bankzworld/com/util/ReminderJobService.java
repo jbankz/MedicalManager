@@ -30,13 +30,13 @@ public class ReminderJobService extends JobService {
             }
         };
         mBackground.execute();
-        return false;
+        return true;
     }
 
     @Override
     public boolean onStopJob(com.firebase.jobdispatcher.JobParameters job) {
         Log.d(TAG, "onStopJob: called");
         if (mBackground != null) mBackground.cancel(true);
-        return false;
+        return true;
     }
 }
