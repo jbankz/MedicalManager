@@ -1,12 +1,11 @@
 # Medical Manager
 This is a simple mobile application that enables users to store the list of their medications and also reminds them when to take their medications.
 The app makes use of the following components for development.
+
 •	ROOM – A database for offline persistent
 •	ButterKnife – For initializing views
 •	Firebase Authentication – For users’ authentication
 •	Esspresso – For recording UI tests
-
-The final app can be downloaded here.
 
 # Prerequisites
 In other to finish build this, you’ll need the following 
