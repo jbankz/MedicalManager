@@ -202,6 +202,8 @@ public class MainActivityFragment extends Fragment {
         //get current user
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
+        Log.d(TAG, "testForUsersAuthentication: " + user);
+
         authListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {

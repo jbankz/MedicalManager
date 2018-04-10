@@ -23,7 +23,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="url" value="jar:file:/C:/Users/Jaycee/Documents/Android/android-studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_alarm_off_black_24dp.xml" />
+                                                <entry key="url" value="jar:file:/C:/Users/Jaycee/Documents/Android/android-studio/plugins/android/lib/android.jar!/images/material_design_icons/image/ic_camera_alt_black_24dp.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -33,9 +33,9 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="outputName" value="ic_cancel_alarm" />
+                                      <entry key="outputName" value="camera" />
                                       <entry key="theme" value="CUSTOM" />
-                                      <entry key="themeColor" value="000000" />
+                                      <entry key="themeColor" value="ffffff" />
                                     </map>
                                   </option>
                                 </PersistentState>

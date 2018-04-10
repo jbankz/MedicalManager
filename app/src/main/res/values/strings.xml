@@ -5,7 +5,6 @@
     <string name="nav_header_title">Medical Manager</string>
     <string name="nav_header_subtitle">vsquare396@github.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
 
     <string name="error_message">required</string>
     <string name="notification_title">Medication Time</string>
@@ -28,7 +27,7 @@
     <string name="title_activity_add_medication">Add Medication</string>
     <string name="full_name">Full name</string>
     <string name="title_activity_settings">SettingsActivity</string>
-    <string name="title_activity_edit_info">EditInfoActivity</string>
+    <string name="title_activity_edit_info">Profile Setup</string>
     <string name="network_error_message">please connect to network &#8230;</string>
     <string name="reset_message">We have sent you instructions to reset your password!</string>
     <string name="error_reset_message">Failed to send reset email!</string>

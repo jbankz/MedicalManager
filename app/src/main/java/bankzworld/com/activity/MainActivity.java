@@ -13,7 +13,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -169,14 +168,12 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_settings) {
             startActivity(new Intent(MainActivity.this, ProfileActivity.class));
         } else if (id == R.id.nav_delete) {
-
             if (!NetworkClass.isConnected(this)) {
                 Toast.makeText(MainActivity.this, R.string.network_error_message, Toast.LENGTH_LONG).show();
             } else {
                 deleteAccount();
             }
         } else if (id == R.id.nav_alarm) {
-            Log.d(TAG, "onNavigationItemSelected: alarm called");
             NotificationUtil.setAlarm(MainActivity.this, "");
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -192,7 +189,7 @@ public class MainActivity extends AppCompatActivity
         builder.setTitle("Alarm");
         builder.setCancelable(false);
         builder.setView(editText);
-        builder.setIcon(R.drawable.ic_add_alarm);
+        builder.setIcon(R.drawable.ic_get_dark_alarm);
         builder.setPositiveButton("Set", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {

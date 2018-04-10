@@ -88,7 +88,7 @@ public class NotificationUtil {
         if (!time.equals("")) {
             int mTime = Integer.parseInt(time);
             Intent intent = new Intent(context, AlarmReceiver.class);
-            pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+            pendingIntent = PendingIntent.getBroadcast(context, 12345, intent, PendingIntent.FLAG_CANCEL_CURRENT);
             AlarmManager manager = (AlarmManager) context.getSystemService(context.ALARM_SERVICE);
             manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), (int) (TimeUnit.MINUTES.toSeconds(mTime)), pendingIntent);
             Toast.makeText(context, "Alarm set for " + time + " Minutes", Toast.LENGTH_SHORT).show();
