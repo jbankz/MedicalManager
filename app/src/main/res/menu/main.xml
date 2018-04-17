@@ -7,10 +7,4 @@
         android:title="@string/search"
         app:actionViewClass="android.support.v7.widget.SearchView"
         app:showAsAction="ifRoom|collapseActionView" />
-
-    <item
-        android:icon="@drawable/ic_add_alarm"
-        android:title="@string/cancel_alarm"
-        app:showAsAction="ifRoom" />
-
 </menu>

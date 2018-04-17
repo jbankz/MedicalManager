@@ -35,6 +35,7 @@ public class PatientInfoActivity extends AppCompatActivity {
     TextInputEditText mUsersWeight;
     @BindView(R.id.users_tempereture)
     TextInputEditText mUsersTemperature;
+
     private String gender, name, age, location, bloodGroup, weight, temp;
 
 
@@ -59,7 +60,14 @@ public class PatientInfoActivity extends AppCompatActivity {
 
                 RadioButton radioButton = (RadioButton) findViewById(id);
 
-                gender = radioButton.getText().toString();
+                if (mMaleButton.isChecked() == true) {
+                    gender = radioButton.getText().toString();
+                } else if (mFemaleButton.isChecked() == true) {
+                    gender = radioButton.getText().toString();
+                } else {
+                    gender = "";
+                }
+
                 name = mName.getText().toString();
                 age = mAge.getText().toString();
                 location = mLocation.getText().toString();
