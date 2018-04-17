@@ -1,8 +1,10 @@
 package bankzworld.com.util;
 
+import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
@@ -13,17 +15,26 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import bankzworld.com.R;
 import bankzworld.com.activity.LoginActivity;
 import bankzworld.com.activity.MainActivity;
-import bankzworld.com.activity.PatientInfoActivity;
 import bankzworld.com.activity.SignupActivity;
+import bankzworld.com.data.AppDatabase;
+import bankzworld.com.data.Medication;
 import bankzworld.com.fragment.MainActivityFragment;
 
 public class UtilClass {
     private static final String TAG = "UtilClass";
 
     private static FirebaseAuth auth = FirebaseAuth.getInstance();
+    Context context;
+
+    public UtilClass(Context context) {
+        this.context = context;
+    }
 
     public static void getAlertDialog(Context context) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -46,6 +57,8 @@ public class UtilClass {
     public static void signOut(Context context) {
         auth.signOut();
         context.startActivity(new Intent(context, LoginActivity.class));
+        // cancels any alarm the user might have set when logged out
+        NotificationUtil.setAlarm(context, "");
         MainActivity mainActivity = new MainActivity();
         mainActivity.finish();
     }
@@ -72,11 +85,11 @@ public class UtilClass {
                         }
                     });
         }
-        // sends an empty data to the activity once the user deletes his/her account given the illusion that the user details have be deleted as well
-        PatientInfoActivity patientInfoActivity = new PatientInfoActivity();
-        patientInfoActivity.saveUserDetails("", "", "", "", "", "", "");
+        // cancels any alarm the user might have set when logged out
+        NotificationUtil.setAlarm(context, "");
+        // deletes all entries in the database
+        deleteAll(context);
     }
-
 
     // checks if user is already logged in
     public static void testForUsersAuthentication(final Context context) {
@@ -104,5 +117,30 @@ public class UtilClass {
             }
         };
     }
+
+
+    public static void deleteAll(Context context) {
+        new DeleteAll(context).execute();
+    }
+
+    // background thread for performing a delete request from the room
+   static class DeleteAll extends AsyncTask<Medication, Void, Void> {
+
+        AppDatabase db;
+        Context context;
+
+        public DeleteAll(Context context) {
+            this.context = context;
+            this.db = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "production").build();
+        }
+
+        @Override
+        protected Void doInBackground(Medication... medications) {
+            db.medicationDao().deleteAll();
+            return null;
+        }
+
+    }
+
 
 }

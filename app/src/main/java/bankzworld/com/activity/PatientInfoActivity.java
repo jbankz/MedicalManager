@@ -84,7 +84,7 @@ public class PatientInfoActivity extends AppCompatActivity {
 
     }
 
-    public void createUser(String name, String gender, String age, String location, String bloodGroup, String weight, String temp) {
+    private void createUser(String name, String gender, String age, String location, String bloodGroup, String weight, String temp) {
         // stores details to prefs
         saveUserDetails(name, gender, age, location, bloodGroup, weight, temp);
         // calls next activity
@@ -94,7 +94,7 @@ public class PatientInfoActivity extends AppCompatActivity {
     }
 
     // stores users data's to preferences
-    public void saveUserDetails(String name, String gender, String age, String location, String bloodGroup, String weight, String temp) {
+    private void saveUserDetails(String name, String gender, String age, String location, String bloodGroup, String weight, String temp) {
         SharedPreferences.Editor editor = getSharedPreferences("myPrefs", MODE_PRIVATE).edit();
         editor.putString("name", name);
         editor.putString("gender", gender);

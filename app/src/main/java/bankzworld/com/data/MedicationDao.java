@@ -26,4 +26,8 @@ public interface MedicationDao {
     @Delete
     int deleteListItem(Medication medication);
 
+    // delete all items in the database
+    @Query("DELETE FROM Medication")
+    void deleteAll();
+
 }

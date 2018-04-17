@@ -79,7 +79,6 @@ public class MainActivityFragment extends Fragment {
             public void onClick(View view) {
                 // starts another activity
                 startActivity(new Intent(getContext(), AddMedicationActivity.class));
-                getActivity().finish();
             }
         });
 
@@ -219,11 +218,11 @@ public class MainActivityFragment extends Fragment {
     }
 
     // called to execute the background thread
-    public void executeDeleteItem(Medication medication) {
+    private void executeDeleteItem(Medication medication) {
         new DeleteItem().execute(medication);
     }
 
-    public void getMonth(String item) {
+    private void getMonth(String item) {
         if (!item.isEmpty()) {
             execute(item);
         } else {
@@ -231,7 +230,7 @@ public class MainActivityFragment extends Fragment {
         }
     }
 
-    public void execute(String medication) {
+    private void execute(String medication) {
         new GetMonthCategory().execute(medication);
     }
 
