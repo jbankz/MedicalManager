@@ -7,8 +7,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".activity.MainActivity"
     tools:showIn="@layout/app_bar_main"
-    android:background="@color/colorShadow"
-    android:id="@+id/layout">
+    android:background="@color/colorShadow">
 
     <!--container to hold the fragment-->
     <FrameLayout

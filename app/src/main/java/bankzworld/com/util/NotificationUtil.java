@@ -97,12 +97,12 @@ public class NotificationUtil {
             alarmManager = (AlarmManager) context.getSystemService(context.ALARM_SERVICE);
 
             alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 1000 * 60 * mTime, pendingIntent);
-            Toast.makeText(context, "Alarm set for " + time + " Minutes", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Alarm set for " + time + " Minutes!", Toast.LENGTH_SHORT).show();
         } else {
             Log.d("TAG", "setAlarm: " + alarmManager);
             if (alarmManager != null) {
                 alarmManager.cancel(pendingIntent);
-                Toast.makeText(context, "Alarm Disabled", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "No alarm set!", Toast.LENGTH_SHORT).show();
             }
         }
     }
