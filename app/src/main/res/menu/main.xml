@@ -9,7 +9,6 @@
         app:showAsAction="ifRoom|collapseActionView" />
 
     <item
-        android:id="@+id/action_set_alarm"
         android:icon="@drawable/ic_add_alarm"
         android:title="@string/cancel_alarm"
         app:showAsAction="ifRoom" />

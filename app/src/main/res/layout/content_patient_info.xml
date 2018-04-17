@@ -19,7 +19,7 @@
             android:id="@+id/patient_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Patient name"
+            android:hint="@string/patient_name"
             android:inputType="text"
             android:maxLines="1"
             android:singleLine="true" />
@@ -30,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Gender"
+        android:text="@string/gender"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
         android:textSize="16sp"
         android:textStyle="bold" />
@@ -45,14 +45,13 @@
             android:id="@+id/rdb_male"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="Male" />
+            android:text="@string/male" />
 
         <RadioButton
             android:id="@+id/rdb_female"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Female" />
+            android:text="@string/female" />
 
 
     </RadioGroup>
@@ -65,7 +64,7 @@
             android:id="@+id/patient_age"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Patient age"
+            android:hint="@string/patient_age"
             android:inputType="number"
             android:maxLines="1"
             android:singleLine="true" />
@@ -80,7 +79,7 @@
             android:id="@+id/patient_location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Patient location"
+            android:hint="@string/patient_location"
             android:inputType="text"
             android:maxLines="1"
             android:singleLine="true" />
@@ -95,7 +94,7 @@
             android:id="@+id/users_blood_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Patient blood group"
+            android:hint="@string/patient_blood_group"
             android:inputType="textCapWords"
             android:maxLength="2"
             android:maxLines="1"
@@ -110,7 +109,7 @@
             android:id="@+id/users_weight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Patient weight"
+            android:hint="@string/patient_weight"
             android:inputType="numberDecimal"
             android:maxLines="1"
             android:singleLine="true" />
@@ -125,7 +124,7 @@
             android:id="@+id/users_tempereture"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Patient temperature"
+            android:hint="@string/patient_temperature"
             android:inputType="numberDecimal"
             android:maxLines="1"
             android:singleLine="true" />

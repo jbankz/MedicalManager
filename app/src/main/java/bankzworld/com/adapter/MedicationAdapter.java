@@ -16,7 +16,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import bankzworld.com.R;
-import bankzworld.com.pojo.Medication;
+import bankzworld.com.data.Medication;
 
 public class MedicationAdapter extends RecyclerView.Adapter<MedicationAdapter.ViewHolder> {
 
@@ -105,8 +105,8 @@ public class MedicationAdapter extends RecyclerView.Adapter<MedicationAdapter.Vi
                     + medication.getDescription()
                     + " drug and should be taken "
                     + medication.getNumOfDoze() + "/" + medication.getNumOfTimes() +
-                    " times daily" + "\n" + "This drug was started today" +
-                    " is expected to last for "
+                    " times daily" + "\n" + "This drug was started today " +
+                    " and is expected to last for "
                     + medication.getEndDate() + " days");
 
             builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {

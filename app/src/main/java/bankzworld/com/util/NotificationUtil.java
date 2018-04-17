@@ -13,8 +13,10 @@ import android.net.Uri;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.widget.Toast;
 
+import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
 
 import bankzworld.com.R;
@@ -27,7 +29,6 @@ public class NotificationUtil {
     private static final int NOTIFICATION_ID = 11;
     private static PendingIntent pendingIntent;
     private static AlarmManager alarmManager;
-    private static Intent intent;
 
     /**
      * create a contentIntent helper method
@@ -88,11 +89,17 @@ public class NotificationUtil {
         if (!time.equals("")) {
             int mTime = Integer.parseInt(time);
             Intent intent = new Intent(context, AlarmReceiver.class);
-            pendingIntent = PendingIntent.getBroadcast(context, 12345, intent, PendingIntent.FLAG_CANCEL_CURRENT);
-            AlarmManager manager = (AlarmManager) context.getSystemService(context.ALARM_SERVICE);
-            manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), (int) (TimeUnit.MINUTES.toSeconds(mTime)), pendingIntent);
+            pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
+
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(System.currentTimeMillis());
+
+            alarmManager = (AlarmManager) context.getSystemService(context.ALARM_SERVICE);
+
+            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 1000 * 60 * mTime, pendingIntent);
             Toast.makeText(context, "Alarm set for " + time + " Minutes", Toast.LENGTH_SHORT).show();
         } else {
+            Log.d("TAG", "setAlarm: " + alarmManager);
             if (alarmManager != null) {
                 alarmManager.cancel(pendingIntent);
                 Toast.makeText(context, "Alarm Disabled", Toast.LENGTH_SHORT).show();

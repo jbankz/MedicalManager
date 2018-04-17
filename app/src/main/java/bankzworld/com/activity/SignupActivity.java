@@ -19,8 +19,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 import bankzworld.com.R;
+import bankzworld.com.data.Medication;
 import bankzworld.com.network.NetworkClass;
-import bankzworld.com.pojo.User;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -106,7 +106,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         // show progress
         mPb.setVisibility(View.VISIBLE);
         // save name to preference
-        User.saveUserToken(this, userName);
+        Medication.saveUsersName(this, userName);
 
         //create user
         auth.createUserWithEmailAndPassword(userEmail, userPassword)

@@ -35,7 +35,7 @@ import bankzworld.com.activity.AddMedicationActivity;
 import bankzworld.com.activity.LoginActivity;
 import bankzworld.com.adapter.MedicationAdapter;
 import bankzworld.com.data.AppDatabase;
-import bankzworld.com.pojo.Medication;
+import bankzworld.com.data.Medication;
 import bankzworld.com.util.NotificationUtil;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -70,15 +70,12 @@ public class MainActivityFragment extends Fragment {
         // tests to see if user is signed in
         testForUsersAuthentication();
 
-        // sets the recycler view
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mRecyclerView.setHasFixedSize(true);
+        // initialises views
+        initialiseView();
 
         // registers the recycler view for the menu
         registerForContextMenu(mRecyclerView);
 
-        db = Room.databaseBuilder(getContext(), AppDatabase.class, "production").build();
         // calls the background thread
         new GetAllItem().execute();
 
@@ -97,6 +94,39 @@ public class MainActivityFragment extends Fragment {
         return view;
     }
 
+    // checks if user is already logged in
+    private void testForUsersAuthentication() {
+
+        //get firebase auth instance
+        auth = FirebaseAuth.getInstance();
+
+        //get current user
+        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        Log.d(TAG, "testForUsersAuthentication: " + user);
+
+        authListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+
+                if (user == null) {
+                    // user auth state is changed - user is null
+                    // launch login activity
+                    startActivity(new Intent(getContext(), LoginActivity.class));
+                    getActivity().finish();
+                }
+            }
+        };
+    }
+
+    // initialise view
+    private void initialiseView() {
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerView.setHasFixedSize(true);
+        db = Room.databaseBuilder(getContext(), AppDatabase.class, "production").build();
+    }
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
@@ -106,6 +136,37 @@ public class MainActivityFragment extends Fragment {
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(search);
         search(searchView);
     }
+
+    public void search(final SearchView searchView) {
+        searchView.setQueryHint(getString(R.string.search_query));
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Log.d(TAG, "onQueryTextSubmit: called");
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterQuery(medicationList, newText);
+                return false;
+            }
+        });
+    }
+
+    // performs a search query
+    public void filterQuery(List<Medication> p, String query) {
+        query = query.toLowerCase();
+        final List<Medication> filteredList = new ArrayList<>();
+        for (Medication medication : p) {
+            final String text = medication.getName().toLowerCase();
+            if (text.startsWith(query)) {
+                filteredList.add(medication);
+            }
+        }
+        mRecyclerView.setAdapter(new MedicationAdapter(filteredList));
+    }
+
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
@@ -161,61 +222,6 @@ public class MainActivityFragment extends Fragment {
             default:
                 return false;
         }
-    }
-
-    public void search(final SearchView searchView) {
-        searchView.setQueryHint(getString(R.string.search_query));
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                Log.d(TAG, "onQueryTextSubmit: called");
-                return true;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                filterQuery(medicationList, newText);
-                return false;
-            }
-        });
-    }
-
-    // performs a search query
-    public void filterQuery(List<Medication> p, String query) {
-        query = query.toLowerCase();
-        final List<Medication> filteredList = new ArrayList<>();
-        for (Medication medication : p) {
-            final String text = medication.getName().toLowerCase();
-            if (text.startsWith(query)) {
-                filteredList.add(medication);
-            }
-        }
-        mRecyclerView.setAdapter(new MedicationAdapter(filteredList));
-    }
-
-    // checks if user is already logged in
-    private void testForUsersAuthentication() {
-
-        //get firebase auth instance
-        auth = FirebaseAuth.getInstance();
-
-        //get current user
-        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-        Log.d(TAG, "testForUsersAuthentication: " + user);
-
-        authListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-
-                if (user == null) {
-                    // user auth state is changed - user is null
-                    // launch login activity
-                    startActivity(new Intent(getContext(), LoginActivity.class));
-                    getActivity().finish();
-                }
-            }
-        };
     }
 
     // deletes an item from the list

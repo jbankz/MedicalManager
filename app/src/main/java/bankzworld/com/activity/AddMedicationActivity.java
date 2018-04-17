@@ -5,6 +5,7 @@ import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
@@ -12,13 +13,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import bankzworld.com.R;
 import bankzworld.com.data.AppDatabase;
-import bankzworld.com.pojo.Medication;
+import bankzworld.com.data.Medication;
+import bankzworld.com.util.NotificationUtil;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -36,6 +39,8 @@ public class AddMedicationActivity extends AppCompatActivity implements View.OnC
     TextInputEditText mNumberOfTimes;
     @BindView(R.id.date)
     EditText mEditDate;
+    @BindView(R.id.alarm_time)
+    TextInputEditText mSetAlarm;
     @BindView(R.id.end_date)
     TextInputEditText mEndDate;
     @BindView(R.id.button_add)
@@ -45,12 +50,12 @@ public class AddMedicationActivity extends AppCompatActivity implements View.OnC
     public AppDatabase db;
     Medication medication;
     // declaration of variables
-    private String mName, mDescription, mDozeNumber, mNumberOfTimesDaily, mNumberOfDays, mCurrentDate, mMonth;
+    private String mName, mDescription, mDozeNumber, mNumberOfTimesDaily, mNumberOfDays, mCurrentDate, mMonth, mAlarm;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_medication);
+        setContentView(R.layout.content_add_medication);
 
         // binds views
         ButterKnife.bind(this);
@@ -77,9 +82,11 @@ public class AddMedicationActivity extends AppCompatActivity implements View.OnC
                 mNumberOfTimesDaily = mNumberOfTimes.getText().toString();
                 mCurrentDate = mEditDate.getText().toString();
                 mNumberOfDays = mEndDate.getText().toString();
+                mAlarm = mSetAlarm.getText().toString();
+
 
                 // calls validation method
-                if (!dataValidation(mName, mDescription, mDozeNumber, mNumberOfTimesDaily, mCurrentDate, mNumberOfDays, mMonth)) {
+                if (!dataValidation(mName, mDescription, mDozeNumber, mNumberOfTimesDaily, mCurrentDate, mNumberOfDays, mMonth, mAlarm)) {
                     return;
                 }
 
@@ -115,7 +122,7 @@ public class AddMedicationActivity extends AppCompatActivity implements View.OnC
      * validate the inputs
      **/
     public boolean dataValidation(String medName, String medDescription,
-                                  String numOfDoze, String numOfTimes, String date, String endDate, String month) {
+                                  String numOfDoze, String numOfTimes, String date, String endDate, String month, String alarm) {
 
         if (medName.isEmpty()) {
             mMedicationName.setError(getString(R.string.error_message));
@@ -157,6 +164,7 @@ public class AddMedicationActivity extends AppCompatActivity implements View.OnC
             super.onPostExecute(aVoid);
             /**Note: REMEMBER TO COMMENT THIS INTENT LINE IN OTHER TO HAVE AN ACCURATE ESPRESSO TEST RESULT OF THIS ACTIVITY/FILE**/
             // sets reminder and calls next activity
+            NotificationUtil.setAlarm(AddMedicationActivity.this, mAlarm);
             startActivity(new Intent(AddMedicationActivity.this, MainActivity.class));
             finish();
         }

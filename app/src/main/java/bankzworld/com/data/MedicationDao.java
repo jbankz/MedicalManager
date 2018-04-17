@@ -7,8 +7,6 @@ import android.arch.persistence.room.Query;
 
 import java.util.List;
 
-import bankzworld.com.pojo.Medication;
-
 @Dao
 public interface MedicationDao {
 
