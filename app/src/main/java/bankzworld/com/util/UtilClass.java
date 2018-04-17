@@ -16,6 +16,7 @@ import com.google.firebase.auth.FirebaseUser;
 import bankzworld.com.R;
 import bankzworld.com.activity.LoginActivity;
 import bankzworld.com.activity.MainActivity;
+import bankzworld.com.activity.PatientInfoActivity;
 import bankzworld.com.activity.SignupActivity;
 import bankzworld.com.fragment.MainActivityFragment;
 
@@ -71,6 +72,9 @@ public class UtilClass {
                         }
                     });
         }
+        // sends an empty data to the activity once the user deletes his/her account given the illusion that the user details have be deleted as well
+        PatientInfoActivity patientInfoActivity = new PatientInfoActivity();
+        patientInfoActivity.saveUserDetails("", "", "", "", "", "", "");
     }
 
 

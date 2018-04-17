@@ -24,19 +24,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import bankzworld.com.R;
 import bankzworld.com.activity.AddMedicationActivity;
-import bankzworld.com.activity.LoginActivity;
 import bankzworld.com.adapter.MedicationAdapter;
 import bankzworld.com.data.AppDatabase;
 import bankzworld.com.data.Medication;
 import bankzworld.com.util.NotificationUtil;
+import bankzworld.com.util.UtilClass;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -49,8 +46,6 @@ public class MainActivityFragment extends Fragment {
     public AppDatabase db;
     @BindView(R.id.recycler_view)
     RecyclerView mRecyclerView;
-    FirebaseAuth.AuthStateListener authListener;
-    FirebaseAuth auth;
     private List<Medication> medicationList = new ArrayList<>();
 
     // mandatory constructor
@@ -68,7 +63,7 @@ public class MainActivityFragment extends Fragment {
         ButterKnife.bind(this, view);
 
         // tests to see if user is signed in
-        testForUsersAuthentication();
+        UtilClass.testForUsersAuthentication(getContext());
 
         // initialises views
         initialiseView();
@@ -92,31 +87,6 @@ public class MainActivityFragment extends Fragment {
         onSwipeToDelete();
 
         return view;
-    }
-
-    // checks if user is already logged in
-    private void testForUsersAuthentication() {
-
-        //get firebase auth instance
-        auth = FirebaseAuth.getInstance();
-
-        //get current user
-        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-        Log.d(TAG, "testForUsersAuthentication: " + user);
-
-        authListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-
-                if (user == null) {
-                    // user auth state is changed - user is null
-                    // launch login activity
-                    startActivity(new Intent(getContext(), LoginActivity.class));
-                    getActivity().finish();
-                }
-            }
-        };
     }
 
     // initialise view

@@ -94,7 +94,7 @@ public class PatientInfoActivity extends AppCompatActivity {
     }
 
     // stores users data's to preferences
-    private void saveUserDetails(String name, String gender, String age, String location, String bloodGroup, String weight, String temp) {
+    public void saveUserDetails(String name, String gender, String age, String location, String bloodGroup, String weight, String temp) {
         SharedPreferences.Editor editor = getSharedPreferences("myPrefs", MODE_PRIVATE).edit();
         editor.putString("name", name);
         editor.putString("gender", gender);

@@ -2,10 +2,6 @@ package bankzworld.com.data;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.net.Uri;
-
-import java.net.URI;
 
 public class SharedPreferenceHandler {
     private final static String USER_PREFS = "MEDICAL_PREF";
