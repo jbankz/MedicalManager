@@ -12,7 +12,7 @@ public class AddMedicationActivityTest {
     public void onClick() {
         AddMedicationActivity addMedicationActivity = new AddMedicationActivity();
         addMedicationActivity.dataValidation("Panadol", "pain killer", "2",
-                "3", "09-04-2018", "3", "04");
+                "3", "09-04-2018", "3", "04", "");
     }
 
 }
