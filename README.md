@@ -2,13 +2,14 @@
 This is a simple mobile application that enables users to store the list of their medications and also reminds them when to take their medications.
 The app makes use of the following components for development.
 
-•	ROOM – A database for offline persistent
-•	ButterKnife – For initializing views
-•	Firebase Authentication – For users’ authentication
-•	Esspresso – For recording UI tests
+# Requirements for building this project
+1. ROOM â€“ A database for offline persistent
+2. ButterKnife â€“ For initializing views
+3. Firebase Authentication â€“ For usersâ€™ authentication
+4. Esspresso â€“ For recording UI tests
 
 # Prerequisites
-In other to finish build this, you’ll need the following 
+In other to finish build this, youâ€™ll need the following 
 1.	A computer (Laptop or Desktop) 
 2.	Android studios 3.0 up to the latest
 
@@ -23,4 +24,10 @@ This page shows gives the users the options to:
 4.	Categorize medications by month
  
 # Sign Out/Delete account
-The user can sign out but this does not clear any settings made by the user such as medications added but if the users gets to delete the account, all users’ settings will be deleted.
+The user can sign out but this does not clear any settings made by the user such as medications added but if the users gets to delete the account, all usersâ€™ settings will be deleted.
+
+# Screenshots
+<img src="https://github.com/jbankz/MedicalManager-master/blob/master/screenshots/Screenshot_20180409-100859.png" />
+<img src="https://github.com/jbankz/MedicalManager-master/blob/master/screenshots/Screenshot_20180417-234609.png" />
+<img src="https://github.com/jbankz/MedicalManager-master/blob/master/screenshots/Screenshot_20180409-101348.png" />
+<img src="https://github.com/jbankz/MedicalManager-master/blob/master/screenshots/Screenshot_20180409-103708.png" />
